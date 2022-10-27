@@ -1,0 +1,433 @@
+		ADAPTIVE SIMULATED ANNEALING
+
+/* $Id: asa.c,v 26.22 2006/11/23 17:26:17 ingber Exp ingber $ */
+
+OPTIONS_FILE = 1
+OPTIONS_FILE_DATA = 1
+RECUR_OPTIONS_FILE = 0
+RECUR_OPTIONS_FILE_DATA = 0
+COST_FILE = 1
+ASA_LIB = 0
+HAVE_ANSI = 1
+IO_PROTOTYPES = 0
+TIME_CALC = 0
+TIME_STD = 0
+TIME_GETRUSAGE = 1
+INT_LONG = 1
+INT_ALLOC = 0
+SMALL_FLOAT =        1e-18
+MIN_DOUBLE =        1e-18
+MAX_DOUBLE =        1e+18
+EPS_DOUBLE =        1e-18
+CHECK_EXPONENT = 0
+NO_PARAM_TEMP_TEST = 0
+NO_COST_TEMP_TEST = 0
+SELF_OPTIMIZE = 0
+ASA_TEST = 0
+ASA_TEST_POINT = 0
+ASA_TEMPLATE = 0
+MY_TEMPLATE = 1
+ASA_TEMPLATE_LIB = 0
+ASA_TEMPLATE_ASA_OUT_PID = 0
+ASA_TEMPLATE_MULTIPLE = 0
+ASA_TEMPLATE_SELFOPT = 0
+ASA_TEMPLATE_SAMPLE = 0
+ASA_TEMPLATE_QUEUE = 0
+ASA_TEMPLATE_PARALLEL = 0
+ASA_TEMPLATE_SAVE = 0
+USER_INITIAL_COST_TEMP = 0
+RATIO_TEMPERATURE_SCALES = 0
+USER_INITIAL_PARAMETERS_TEMPS = 0
+DELTA_PARAMETERS = 0
+QUENCH_PARAMETERS = 0
+QUENCH_COST = 0
+QUENCH_PARAMETERS_SCALE = 1
+QUENCH_COST_SCALE = 1
+OPTIONAL_DATA_DBL = 0
+OPTIONAL_DATA_INT = 0
+OPTIONAL_DATA_PTR = 0
+USER_COST_SCHEDULE = 0
+USER_ACCEPT_ASYMP_EXP = 0
+USER_ACCEPT_THRESHOLD = 0
+USER_ACCEPTANCE_TEST = 0
+USER_GENERATING_FUNCTION = 0
+USER_REANNEAL_COST = 0
+USER_REANNEAL_PARAMETERS = 0
+MAXIMUM_REANNEAL_INDEX = 50000
+REANNEAL_SCALE =           10
+ASA_SAMPLE = 0
+ASA_QUEUE = 0
+ASA_RESOLUTION = 0
+FITLOC = 0
+FITLOC_ROUND = 1
+FITLOC_PRINT = 1
+MULTI_MIN = 0
+ASA_PARALLEL = 0
+FDLIBM_POW = 0
+FDLIBM_LOG = 0
+FDLIBM_EXP = 0
+
+ASA_PRINT = 1
+USER_OUT = asa_usr_out
+ASA_OUT = asa_out
+USER_ASA_OUT = 0
+ASA_PRINT_INTERMED = 1
+ASA_PRINT_MORE = 0
+INCL_STDOUT = 1
+G_FIELD = 12
+G_PRECISION = 7
+ASA_SAVE = 0
+ASA_SAVE_OPT = 0
+ASA_SAVE_BACKUP = 0
+ASA_PIPE = 0
+ASA_PIPE_FILE = 0
+SYSTEM_CALL = 1
+
+OPTIONS->Limit_Acceptances = 1000
+OPTIONS->Limit_Generated = 99999
+OPTIONS->Limit_Invalid_Generated_States = 1000
+OPTIONS->Accepted_To_Generated_Ratio =       0.0001
+
+OPTIONS->Cost_Precision =        1e-18
+OPTIONS->Maximum_Cost_Repeat = 5
+OPTIONS->Number_Cost_Samples = 5
+OPTIONS->Temperature_Ratio_Scale =        1e-05
+OPTIONS->Cost_Parameter_Scale_Ratio =            1
+OPTIONS->Temperature_Anneal_Scale =          100
+OPTIONS->Include_Integer_Parameters = 0
+OPTIONS->User_Initial_Parameters = 0
+OPTIONS->Sequential_Parameters = -1
+OPTIONS->Initial_Parameter_Temperature =            1
+OPTIONS->Acceptance_Frequency_Modulus = 100
+OPTIONS->Generated_Frequency_Modulus = 10000
+OPTIONS->Reanneal_Cost = 1
+OPTIONS->Reanneal_Parameters = 1
+
+OPTIONS->Delta_X =        0.001
+OPTIONS->User_Tangents = 0
+OPTIONS->Curvature_0 = 0
+OPTIONS->Asa_Recursive_Level = 0
+
+
+Initial Random Seed = 40679
+
+*number_parameters = 13
+
+index_v parameter_minimum parameter_maximum parameter_value parameter_type 
+ 0        20           		 30           	 24           1      
+ 1        20           		 30           	 24           1      
+ 2        20           		 30           	 24           1      
+ 3        20           		 30           	 24           1      
+ 4        20           		 30           	 24           1      
+ 5        20           		 30           	 24           1      
+ 6        20           		 30           	 24           1      
+ 7        20           		 30           	 24           1      
+ 8        20           		 30           	 24           1      
+ 9        20           		 30           	 24           1      
+ 10       20           		 30           	 24           1      
+ 11       20           		 30           	 24           1      
+ 12       20           		 30           	 24           1      
+
+
+temperature_scale =     8.078664
+temperature_scale_parameters[0] =     8.078664
+*temperature_scale_cost =     8.078664
+
+
+
+*index_cost_acceptances = 0, *current_cost_temperature =       3099.6
+*accepted_to_generated_ratio =            1, *number_invalid... = 17
+*number_generated = 0, *number_accepted = 0
+best...->cost =         3607, last...->cost =         3607
+index_v  best...->parameter current_parameter_temp	tangent
+0	          30		           1	           0
+1	          27		           1	           0
+2	          22		           1	           0
+3	          23		           1	           0
+4	          27		           1	           0
+5	          27		           1	           0
+6	          23		           1	           0
+7	          26		           1	           0
+8	          22		           1	           0
+9	          25		           1	           0
+10	          23		           1	           0
+11	          25		           1	           0
+12	          26		           1	           0
+
+
+best...->cost=3601          *number_accepted=3  *number_generated=7
+best...->cost=3571          *number_accepted=4  *number_generated=9
+best...->cost=3435          *number_accepted=5  *number_generated=11
+best...->cost=3434          *number_accepted=6  *number_generated=14
+best...->cost=3344          *number_accepted=7  *number_generated=15
+best...->cost=3313          *number_accepted=9  *number_generated=23
+best...->cost=2893          *number_accepted=11  *number_generated=27
+best...->cost=2892          *number_accepted=12  *number_generated=29
+best...->cost=2867          *number_accepted=13  *number_generated=30
+best...->cost=2843          *number_accepted=15  *number_generated=33
+best...->cost=2822          *number_accepted=16  *number_generated=37
+best...->cost=2821          *number_accepted=18  *number_generated=44
+best...->cost=2820          *number_accepted=19  *number_generated=48
+best...->cost=2818          *number_accepted=21  *number_generated=55
+best...->cost=2817          *number_accepted=23  *number_generated=65
+best...->cost=2792          *number_accepted=25  *number_generated=73
+best...->cost=2791          *number_accepted=26  *number_generated=76
+best...->cost=2790          *number_accepted=31  *number_generated=89
+best...->cost=2788          *number_accepted=33  *number_generated=95
+best...->cost=2744          *number_accepted=36  *number_generated=100
+best...->cost=2730          *number_accepted=43  *number_generated=126
+best...->cost=2705          *number_accepted=45  *number_generated=128
+best...->cost=2704          *number_accepted=47  *number_generated=139
+best...->cost=2702          *number_accepted=49  *number_generated=143
+best...->cost=2701          *number_accepted=53  *number_generated=156
+best...->cost=2645          *number_accepted=54  *number_generated=158
+best...->cost=2640          *number_accepted=56  *number_generated=162
+best...->cost=2618          *number_accepted=57  *number_generated=163
+best...->cost=2616          *number_accepted=61  *number_generated=176
+best...->cost=2614          *number_accepted=67  *number_generated=201
+best...->cost=2588          *number_accepted=68  *number_generated=203
+best...->cost=2587          *number_accepted=70  *number_generated=211
+best...->cost=2586          *number_accepted=79  *number_generated=271
+best...->cost=2585          *number_accepted=95  *number_generated=325
+
+*index_cost_acceptances = 80, *current_cost_temperature =   0.03127301
+*accepted_to_generated_ratio =    0.2068966, *number_invalid... = 307
+*number_generated = 353, *number_accepted = 100
+best...->cost =         2585, last...->cost =         2585
+index_v  best...->parameter current_parameter_temp	tangent
+0	          23		3.094368e-06	           0
+1	          23		3.094368e-06	           0
+2	          26		3.094368e-06	           0
+3	          26		3.094368e-06	           0
+4	          25		3.094368e-06	           0
+5	          24		3.094368e-06	           0
+6	          26		3.094368e-06	           0
+7	          23		3.094368e-06	           0
+8	          26		3.094368e-06	           0
+9	          24		3.094368e-06	           0
+10	          25		3.094368e-06	           0
+11	          23		3.094368e-06	           0
+12	          26		3.094368e-06	           0
+
+
+best...->cost=2564          *number_accepted=106  *number_generated=366
+best...->cost=2563          *number_accepted=162  *number_generated=640
+best...->cost=2562          *number_accepted=170  *number_generated=660
+
+*index_cost_acceptances = 177, *current_cost_temperature =   0.01525602
+*accepted_to_generated_ratio =    0.1812865, *number_invalid... = 978
+*number_generated = 830, *number_accepted = 200
+best...->cost =         2562, last...->cost =         2562
+index_v  best...->parameter current_parameter_temp	tangent
+0	          23		1.306348e-06	           0
+1	          23		1.306348e-06	           0
+2	          26		1.306348e-06	           0
+3	          26		1.306348e-06	           0
+4	          25		1.306348e-06	           0
+5	          27		1.306348e-06	           0
+6	          26		1.306348e-06	           0
+7	          23		1.306348e-06	           0
+8	          26		1.306348e-06	           0
+9	          23		1.306348e-06	           0
+10	          25		1.306348e-06	           0
+11	          23		1.306348e-06	           0
+12	          27		1.306348e-06	           0
+
+
+
+*index_cost_acceptances = 276, *current_cost_temperature =   0.01005667
+*accepted_to_generated_ratio =    0.1898551, *number_invalid... = 1634
+*number_generated = 1349, *number_accepted = 300
+best...->cost =         2562, last...->cost =         2562
+index_v  best...->parameter current_parameter_temp	tangent
+0	          23		7.799571e-07	           0
+1	          23		7.799571e-07	           0
+2	          26		7.799571e-07	           0
+3	          26		7.799571e-07	           0
+4	          25		7.799571e-07	           0
+5	          27		7.799571e-07	           0
+6	          26		7.799571e-07	           0
+7	          23		7.799571e-07	           0
+8	          26		7.799571e-07	           0
+9	          23		7.799571e-07	           0
+10	          25		7.799571e-07	           0
+11	          23		7.799571e-07	           0
+12	          27		7.799571e-07	           0
+
+
+
+*index_cost_acceptances = 374, *current_cost_temperature =  0.007472555
+*accepted_to_generated_ratio =    0.1879577, *number_invalid... = 2346
+*number_generated = 1888, *number_accepted = 400
+best...->cost =         2562, last...->cost =         2562
+index_v  best...->parameter current_parameter_temp	tangent
+0	          23		   5.396e-07	           0
+1	          23		   5.396e-07	           0
+2	          26		   5.396e-07	           0
+3	          26		   5.396e-07	           0
+4	          25		   5.396e-07	           0
+5	          27		   5.396e-07	           0
+6	          26		   5.396e-07	           0
+7	          23		   5.396e-07	           0
+8	          26		   5.396e-07	           0
+9	          23		   5.396e-07	           0
+10	          25		   5.396e-07	           0
+11	          23		   5.396e-07	           0
+12	          27		   5.396e-07	           0
+
+
+
+*index_cost_acceptances = 473, *current_cost_temperature =  0.005939209
+*accepted_to_generated_ratio =    0.1951651, *number_invalid... = 2890
+*number_generated = 2355, *number_accepted = 500
+best...->cost =         2562, last...->cost =         2562
+index_v  best...->parameter current_parameter_temp	tangent
+0	          23		4.213036e-07	           0
+1	          23		4.213036e-07	           0
+2	          26		4.213036e-07	           0
+3	          26		4.213036e-07	           0
+4	          25		4.213036e-07	           0
+5	          27		4.213036e-07	           0
+6	          26		4.213036e-07	           0
+7	          23		4.213036e-07	           0
+8	          26		4.213036e-07	           0
+9	          23		4.213036e-07	           0
+10	          25		4.213036e-07	           0
+11	          23		4.213036e-07	           0
+12	          27		4.213036e-07	           0
+
+
+
+*index_cost_acceptances = 573, *current_cost_temperature =  0.004906244
+*accepted_to_generated_ratio =    0.1984346, *number_invalid... = 3438
+*number_generated = 2831, *number_accepted = 600
+best...->cost =         2562, last...->cost =         2562
+index_v  best...->parameter current_parameter_temp	tangent
+0	          23		3.417218e-07	           0
+1	          23		3.417218e-07	           0
+2	          26		3.417218e-07	           0
+3	          26		3.417218e-07	           0
+4	          25		3.417218e-07	           0
+5	          27		3.417218e-07	           0
+6	          26		3.417218e-07	           0
+7	          23		3.417218e-07	           0
+8	          26		3.417218e-07	           0
+9	          23		3.417218e-07	           0
+10	          25		3.417218e-07	           0
+11	          23		3.417218e-07	           0
+12	          27		3.417218e-07	           0
+
+curvature[0][0] =            0
+
+curvature[1][0] =            0 	 = curvature[0][1]
+curvature[1][1] =            0
+
+curvature[2][0] =            0 	 = curvature[0][2]
+curvature[2][1] =            0 	 = curvature[1][2]
+curvature[2][2] =            0
+
+curvature[3][0] =            0 	 = curvature[0][3]
+curvature[3][1] =            0 	 = curvature[1][3]
+curvature[3][2] =            0 	 = curvature[2][3]
+curvature[3][3] =            0
+
+curvature[4][0] =            0 	 = curvature[0][4]
+curvature[4][1] =            0 	 = curvature[1][4]
+curvature[4][2] =            0 	 = curvature[2][4]
+curvature[4][3] =            0 	 = curvature[3][4]
+curvature[4][4] =            0
+
+curvature[5][0] =            0 	 = curvature[0][5]
+curvature[5][1] =            0 	 = curvature[1][5]
+curvature[5][2] =            0 	 = curvature[2][5]
+curvature[5][3] =            0 	 = curvature[3][5]
+curvature[5][4] =            0 	 = curvature[4][5]
+curvature[5][5] =            0
+
+curvature[6][0] =            0 	 = curvature[0][6]
+curvature[6][1] =            0 	 = curvature[1][6]
+curvature[6][2] =            0 	 = curvature[2][6]
+curvature[6][3] =            0 	 = curvature[3][6]
+curvature[6][4] =            0 	 = curvature[4][6]
+curvature[6][5] =            0 	 = curvature[5][6]
+curvature[6][6] =            0
+
+curvature[7][0] =            0 	 = curvature[0][7]
+curvature[7][1] =            0 	 = curvature[1][7]
+curvature[7][2] =            0 	 = curvature[2][7]
+curvature[7][3] =            0 	 = curvature[3][7]
+curvature[7][4] =            0 	 = curvature[4][7]
+curvature[7][5] =            0 	 = curvature[5][7]
+curvature[7][6] =            0 	 = curvature[6][7]
+curvature[7][7] =            0
+
+curvature[8][0] =            0 	 = curvature[0][8]
+curvature[8][1] =            0 	 = curvature[1][8]
+curvature[8][2] =            0 	 = curvature[2][8]
+curvature[8][3] =            0 	 = curvature[3][8]
+curvature[8][4] =            0 	 = curvature[4][8]
+curvature[8][5] =            0 	 = curvature[5][8]
+curvature[8][6] =            0 	 = curvature[6][8]
+curvature[8][7] =            0 	 = curvature[7][8]
+curvature[8][8] =            0
+
+curvature[9][0] =            0 	 = curvature[0][9]
+curvature[9][1] =            0 	 = curvature[1][9]
+curvature[9][2] =            0 	 = curvature[2][9]
+curvature[9][3] =            0 	 = curvature[3][9]
+curvature[9][4] =            0 	 = curvature[4][9]
+curvature[9][5] =            0 	 = curvature[5][9]
+curvature[9][6] =            0 	 = curvature[6][9]
+curvature[9][7] =            0 	 = curvature[7][9]
+curvature[9][8] =            0 	 = curvature[8][9]
+curvature[9][9] =            0
+
+curvature[10][0] =            0 	 = curvature[0][10]
+curvature[10][1] =            0 	 = curvature[1][10]
+curvature[10][2] =            0 	 = curvature[2][10]
+curvature[10][3] =            0 	 = curvature[3][10]
+curvature[10][4] =            0 	 = curvature[4][10]
+curvature[10][5] =            0 	 = curvature[5][10]
+curvature[10][6] =            0 	 = curvature[6][10]
+curvature[10][7] =            0 	 = curvature[7][10]
+curvature[10][8] =            0 	 = curvature[8][10]
+curvature[10][9] =            0 	 = curvature[9][10]
+curvature[10][10] =            0
+
+curvature[11][0] =            0 	 = curvature[0][11]
+curvature[11][1] =            0 	 = curvature[1][11]
+curvature[11][2] =            0 	 = curvature[2][11]
+curvature[11][3] =            0 	 = curvature[3][11]
+curvature[11][4] =            0 	 = curvature[4][11]
+curvature[11][5] =            0 	 = curvature[5][11]
+curvature[11][6] =            0 	 = curvature[6][11]
+curvature[11][7] =            0 	 = curvature[7][11]
+curvature[11][8] =            0 	 = curvature[8][11]
+curvature[11][9] =            0 	 = curvature[9][11]
+curvature[11][10] =            0 	 = curvature[10][11]
+curvature[11][11] =            0
+
+curvature[12][0] =            0 	 = curvature[0][12]
+curvature[12][1] =            0 	 = curvature[1][12]
+curvature[12][2] =            0 	 = curvature[2][12]
+curvature[12][3] =            0 	 = curvature[3][12]
+curvature[12][4] =            0 	 = curvature[4][12]
+curvature[12][5] =            0 	 = curvature[5][12]
+curvature[12][6] =            0 	 = curvature[6][12]
+curvature[12][7] =            0 	 = curvature[7][12]
+curvature[12][8] =            0 	 = curvature[8][12]
+curvature[12][9] =            0 	 = curvature[9][12]
+curvature[12][10] =            0 	 = curvature[10][12]
+curvature[12][11] =            0 	 = curvature[11][12]
+curvature[12][12] =            0
+
+
+
+ COST_REPEATING exit_status = 3
+ Locate_Cost = 5, calculating curvatures while exiting asa ()
+final_cost = best_generated_state->cost = 2562        
+*number_accepted at best_generated_state->cost = 170
+*number_generated at best_generated_state->cost = 660
+
+
+
