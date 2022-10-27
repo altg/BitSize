@@ -1,0 +1,19 @@
+# $Id: makefile.std,v 1.7 2004/12/23 18:05:23 amag97 Exp $
+# $Author: amag97 $
+
+bitsize: $(STREAM_TARGET) 
+
+%.exe: %.o $(BS_LIB_PATH)
+	$(CC) -o $@ $^ $(BS_LFLAGS)
+
+%.o: %_temp.cxx
+	@echo "*** Compiling for BitSize Debug ***"
+	$(CC) -c $< -o $@ $(BS_CFLAGS)
+
+%_temp.cxx: %_opt.cxx
+	@echo "*** ASC2BITSIZE Pre-process pass ***"
+	perl $(ASC2BITSIZE) $< > $@
+
+
+
+.PRECIOUS: %_temp.cxx

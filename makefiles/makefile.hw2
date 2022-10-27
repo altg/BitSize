@@ -1,0 +1,88 @@
+NETGEN_OPTIONS=-rpw 100 -tpw 0 -ar Structure -xon true -w -ofmt vhdl 
+MAP_OPTIONS=-cm area -pr b -k 4 -c 100 -tx off 
+
+SIM_TIME=1000ns
+
+c_dir := $(shell pwd | sed -e 's/\/.*\///')
+
+PRE_NAME := $(join $(c_dir), $(join _ ,$(PRE_NAME_IN) ) )
+
+#TESTNAME_UC := $(shell echo $(TESTNAME) | dd conv=ucase 2> /dev/null )
+
+
+OS_NAME=$(shell uname -o)
+
+
+
+#%_timesim.vhd:   %.ncd 
+#	netgen -intstyle ise -s 4 -pcf $*.pcf -ngm $*_map.ngm $(NETGEN_OPTIONS) -sim $*.ncd $*_timesim.vhd
+#	@echo "Fixing $@ file."
+#	@cat $@ | sed -ne '/-- Xilinx Vhdl/,/entity/p' | grep -v 'entity' > head_part
+#	@cat $(<:.ncd=.vhd) | sed -ne '/entity $(*:.ncd=)/,/end $(*:.ncd=);/p' | sed -e 's/attribute .*;//' > entity_name
+#ifeq ($(OS_NAME),Cygwin)
+#	@cat $@ | sed -ne '/end $(*:.ncd=);/,/end Structure;/p' | grep -v 'end $(*:.ncd=);' > tail_part
+#else
+#ifeq ($(TESTNAME),mult)
+#	@cat $@ | sed -ne '/end MULT_GLITCH;/,/end STRUCTURE;/p' | grep -v 'end MULT_GLITCH;' > tail_part
+#else
+#	@cat $@ | sed -ne '/end $(TESTNAME_UC)_GLITCH;/,/end STRUCTURE;/p' | grep -v 'end $(TESTNAME_UC)_GLITCH;' > tail_part
+
+#endif
+#endif
+#	@cp head_part $@
+#	@cat entity_name >> $@
+#	@cat tail_part >> $@
+#	@rm -f head_part tail_part entity_name
+#	@echo "Done."
+
+
+
+%_timesim.vhd:   %.ncd 
+	netgen -intstyle ise -s 4 -pcf $*.pcf -ngm $*_map.ngm $(NETGEN_OPTIONS) -sim $*.ncd $*_timesim.vhd
+
+
+%.ngd: %.edf
+	ngdbuild -intstyle ise $^ $@ $(UCF_OPT)
+
+%.ncd: %.ngd
+	map -intstyle ise -o $@ $^ $(^:.ngd=.pcf) 
+	map -intstyle ise -o $(@:.ncd=_map.ncd) $^ $(^:.ngd=.pcf)
+	par -intstyle ise -ol std -t 1 -w $(@:.ncd=_map.ncd) $@ $(^:.ngd=.pcf)
+
+#%.ncd: %.ngd
+#	map -intstyle ise -o $@ $^ $(^:.ngd=.pcf) 
+#	par -intstyle ise -ol std -t 1 -w $@ $@ $(^:.ngd=.pcf)
+
+
+%.edf: %.vhd
+	@perl $(BITSIZE_HOME)/plfiles/gen_synplicity_prj.pl $^ $@ bitsize_test
+	echo "Running Synplify Pro Synthesis"
+	synplify_pro synproj.prj -batch -launchmode
+
+%.vcd: %_timesim.vhd
+	@$(SIGNALGEN)/gen_sigs_vhdl.exe $(BWFILE) asctest.dat 1000
+	@perl $(BITSIZE_HOME)/plfiles/gen_modelsim.pl $(@:.vcd=) $(SIM_TIME)
+ifeq ($(FAST_SIM),true)
+	vsim -c -quiet -do modsim.do
+else
+	vsim -c -quiet -do modsim_compile.do
+	vsim -c -quiet -do modsim.do
+endif
+
+%.pwr: %.vcd
+	@$(PERL) $(BITSIZE_HOME)/plfiles/gen_xpwr_settings.pl
+	xpwr -v -a $(^:.vcd=.ncd) $(^:.vcd=.pcf)  -s $^ -l 200000000  -t bs_xpwr_settings.tcl 
+	@cat $@ | sed -ne '/^Power summary:/,/^Thermal/p'
+
+
+%_timing.xml: %.ncd %.pcf
+	trce -intstyle ise -u $(TRCE_OPTS) -a $^ -xml $@
+
+clean_sim:
+	rm -f *.vcd
+
+
+clean_hw_all:
+	rm -f *.edf *_timesim.vhd *.ncd *.ngd *.ngm *.vcd
+
+.PRECIOUS: %.ncd %.ngd %_timesim.vhd %.edf

@@ -1,0 +1,60 @@
+
+%.pwr: %.vcd
+	@echo "*** BitSize Power Analysis ***"
+	@$(PERL) $(BITSIZE_HOME)/plfiles/gen_xpwr_settings.pl
+	xpwr -v -a $(^:.vcd=.ncd) $(^:.vcd=.pcf)  -s $^ -l 200000000  -t bs_xpwr_settings.tcl -wx
+	@cat $@ | sed -ne '/^Power summary:/,/^Thermal/p'
+
+%.vcd: %_timesim.vhd
+	@echo "*** Netlist Level simulation ***"
+	@$(SIGNALGEN)/gen_sigs_vhdl.exe $(BWFILE) asctest.dat 1000
+	@perl $(BITSIZE_HOME)/plfiles/gen_modelsim.pl $(@:.vcd=) $(SIM_TIME)
+	vsim -c -quiet -do modsim_compile.do
+	vsim -c -quiet -do modsim.do
+
+#ifeq ($(FAST_SIM),true)
+#	vsim -c -quiet -do modsim.do
+#else
+#	vsim -c -quiet -do modsim_compile.do
+#	vsim -c -quiet -do modsim.do
+#endif
+
+
+%_timesim.vhd:  %.ncd %_timing.xml
+	@echo "*** Compiling BitSize Post Placement VHDL netlist ***"
+	netgen -intstyle ise -s 4 -pcf $*.pcf -ngm $*_map.ngm $(NETGEN_OPTIONS) -sim $*.ncd $*_timesim.vhd
+
+%_timing.xml: %.ncd
+	trce -intstyle ise -u $(TRCE_OPTS) -a $^ -xml $@
+
+%.ncd: %.ngd
+	@echo "*** Compiling BitSize VHDL to HW - Setup 2/4***"
+	map -intstyle ise -o $@ $^ $(^:.ngd=.pcf) > $(^:.ngd=.pnr)
+	@echo "*** Compiling BitSize VHDL to HW - Setup 3/4***"
+	map -intstyle ise -o $(@:.ncd=_map.ncd) $^ $(^:.ngd=.pcf) >> $(^:.ngd=.pnr)
+	@echo "*** Compiling BitSize VHDL to HW - Setup 4/4***"
+	par -intstyle ise -ol std -t 1 -w $(@:.ncd=_map.ncd) $@ $(^:.ngd=.pcf) >> $(^:.ngd=.pnr)
+
+%.ngd: %.edf
+	@echo "*** Generating Xilinx Core files ***"
+	@$(PERL) $(BITSIZE_HOME)/plfiles/bs_postpass_vhdl.pl bitsize_test.vhd
+	@echo "*** Compiling BitSize VHDL to HW - Setup 1/4***"
+	ngdbuild -intstyle ise $^ $@ $(UCF_OPT)
+
+%.edf: bitsize_test.vhd
+	@perl $(BITSIZE_HOME)/plfiles/gen_synplicity_prj.pl $^ $@ bitsize_test
+	echo "Running Synplify Pro Synthesis"
+	synplify_pro synproj.prj -batch -launchmode
+
+bitsize_test.vhd: 
+	@echo "*** Generating VHDL file using bitwidths from $(BWFILE) ***"
+	@./stream.exe -nobopt -vhdlgen -bwf $(BWFILE)
+
+clean_sim:
+	rm -f *.vcd
+
+
+clean_hw_all:
+	rm -f bitsize_test.vhd *.edf *_timesim.vhd *.ncd *.ngd *.ngm *.vcd
+
+.PRECIOUS: %.ncd %.ngd %_timesim.vhd %.edf

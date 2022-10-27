@@ -1,0 +1,89 @@
+# $Author: amag97 $
+# $Id: makefile.bitsize,v 1.12 2006/04/28 17:12:06 amag97 Exp $
+
+# BitSize make file to interface with ASC
+
+include $(BITSIZE_HOME)/makefiles/makefile.config
+
+include $(BITSIZE_HOME)/makefiles/makefile.hw
+
+.DEFAULT :
+	make bitsize_help
+
+bitsize_help:
+	@echo ""
+	@echo "Welcome to ASC - BitSize Compilation System"
+	@echo ""
+	@echo "Commands:"
+	@echo ""
+	@echo "     bitsize:"
+	@echo "     bitsize_compile:"
+	@echo "     bitsize_graph:"
+
+
+bitsize: bitsize_run
+#	@echo "*** Creating bitwidth annotated stream.cxx ***"
+#	perl $(BITSIZE2ASC) bitsize.dat stream_opt.cxx > stream.cxx
+#	@echo " "
+
+bitsize2: bitsize_run
+	@echo "*** Creating bitwidth annotated stream.cxx ***"
+	perl $(BITSIZE2ASC2) bitsize_prec.dat bitsize_range.dat stream_opt.cxx > stream.cxx
+	@echo " "
+
+bitsize_annotate:
+	@echo "*** Annotating stream.cxx with calculated bitwidths from bitsize.dat ***"
+	@perl $(BITSIZE2ASC) bitsize.dat stream_opt.cxx > stream.cxx
+	@echo " " 
+
+bitsize_run: bitsize_compile
+	@echo "** Running BitSize Pass with input data file $(BS_DATA_FILE) **"
+	./stream.exe $(OPT_MODE) $(RUN_TIME_FLAGS)
+#	rm -f stream.exe
+
+bitsize_compile:
+	@echo "*** Compiling ASC Stream for BitSize Pass ***"
+	make -f $(BITSIZE_HOME)/makefiles/makefile.std bitsize CFLAGS_IN=$(EX_CFLAGS_IN)
+	@echo " "
+
+bitsize_data: clean_hw_all bitsize_test.pwr
+	@$(PERL) $(BITSIZE_HOME)/plfiles/process_data.pl bitsize_test.pwr bitsize_test_map.mrp $(BWFILE) bitsize_test_data.m
+
+bitsize_data_test: bitsize_test.pwr
+	@$(PERL) $(BITSIZE_HOME)/plfiles/process_data.pl bitsize_test.pwr bitsize_test_map.mrp $(BWFILE) bitsize_test_data.m
+
+bitsize_graph: bitsize_run
+ifeq ($(BS_GRAPH_GEN),yes)
+	$(DOTTY) graph.dot
+else
+	@echo "!! Graph not generated"
+	@echo "make graph GRAPH_GEN=yes to produce graph"
+endif
+
+
+#For testing / debugging purpose
+bitsize_test: bitsize_test.vcd
+	rm -f *.tcl
+	$(PERL) $(PLHOME)/gen_xpwr_settings.pl
+	xpwr -v -a $(^:.vcd=.ncd) $(^:.vcd=.pcf)  -s $^ -l 200000000  -t bs_xpwr_settings.tcl -wx
+
+
+gen_input_roms:
+	@echo "Generating Input Roms "
+	$(SIGNALGEN)/gen_rom_data.exe
+	$(PERL) $(PLHOME)/gen_input_roms.pl
+
+gen_xor_tree:
+	@echo "Generating XOR tree with $(XOR_TREE_WIDTH)"
+	$(PERL) $(PLHOME)/gen_xor_tree.pl $(XOR_TREE_WIDTH) xor_tree.vhd
+
+.EXPORT_ALL_VARIABLES:
+
+refresh: 
+	rm -f $(STREAM_TARGET)
+
+clean_bitsize:
+	@rm -f $(STREAM_TARGET) $(STREAM_TARGET:.exe=_temp.cxx)
+
+clean_hw:
+	make  -f $(BITSIZE_HOME)/makefiles/makefile.hw clean_hw_all
