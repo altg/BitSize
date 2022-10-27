@@ -1,0 +1,62 @@
+(setq prjdir "~/Projects/bitsize/ad_bitsize")
+
+(setq prjfiles
+	'( "advar.cpp"
+ 	   "advar.h" 
+	   "makefile"
+	   "bsclass.cpp"
+	   "bsclass.h"
+           "hwvar.h"
+	   "hwvar.cpp"
+           "hwfloat.h"
+           "hwfloat.cpp"
+	   "hwfix.cpp"
+           "hwfix.h"
+	   "gen_vhdl.cpp"
+	   "varcollections.h"
+	   "varnames.h"
+	   "varnames.cpp"
+	   "node.h"
+           "node.cpp"
+	   "edge.h"
+           "edge.cpp"
+	   "bitsize.h"
+           "dag.h"
+           "dag.cpp"
+	   "hwvector.h"
+           "hwint.h"
+	   "hwint.cpp"
+           "bwoptfix.cpp"
+	   "bwoptfix.h"
+           "bitsize_class.h"
+           "bitsize_class.cpp"
+	   "errormodel.h"
+	   "errormodel.cpp"
+	   "node_sched.h"
+	   "node_sched.cpp"
+           "affine_range.h"
+	   "affine_range.cpp"
+	   "errormodel_affine.cpp"
+	   "errormodel_affine2.cpp"
+	   "errormodel_affine.h"
+	   "bitsize_pass.h"
+	   "bitsize_pass.cpp"
+	   "cost_function.cpp"
+	   "ad_dag.cpp"
+	   "ad_dag.h"
+	   "optbw.h"
+           "optbw.cpp"
+	   "optbw_fx.cpp"
+	   "optbw_flt.cpp"
+           "pwrdata.cpp"
+           "cost_function_pwr.cpp"
+	   "bitsize.xeprj"
+	   "ilpgen.cpp"
+         )
+)
+
+(cd prjdir)
+
+(open-files prjfiles)
+
+

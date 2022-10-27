@@ -1,0 +1,37 @@
+# $Author: amag97 $
+# $Id: makefile.ascint,v 1.2 2004/06/07 11:27:46 amag97 Exp $
+
+GRAPH_GEN=yes
+
+ifeq ($(GRAPH_GEN),yes)
+EX_CFLAGS_IN+="-D _GRAPH_GEN"
+endif
+
+
+
+DOTTY=`/c/Program\ Files/ATT/Graphviz/bin/dotty graph.dot`
+BITSIZE2ASC=$(BITSIZE_HOME)/../plfiles/bs2asc.pl
+
+bitsize:
+	@echo '** Compiling for BitSize Pass **'
+	make -f $(BITSIZE_HOME)/../makefiles/makefile.bw  refresh bitsize CFLAGS_IN=$(EX_CFLAGS_IN)
+	@echo "** Running BitSize Pass **"
+	./stream.exe
+	rm -f stream.exe
+
+bitsize_d:
+	@echo '** Compiling for BitSize Debug **'
+	make -f $(BITSIZE_HOME)/../makefiles/makefile.bw refresh bitsize MODE=debug CFLAGS_IN=$(EX_CFLAGS_IN)
+	./stream.exe
+	$(BITSIZE2ASC) bitsize.dat stream.cxx > bitsize.out
+
+run_d: bitsize_d
+	./stream.exe
+
+graph: run_d
+ifeq ($(GRAPH_GEN),yes)
+	$(DOTTY)
+else
+	@echo "!! Graph not generated"
+	@echo "make graph GRAPH_GEN=yes to produce graph"
+endif 

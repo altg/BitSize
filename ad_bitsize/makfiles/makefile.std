@@ -1,0 +1,39 @@
+ # $Id: makefile.std,v 1.3 2004/06/10 19:57:23 amag97 Exp $
+# $Author: amag97 $
+
+include $(HOME)/makfiles/gcc_defs.mak
+
+BITSIZE_HOME=$(HOME)/Projects/bitsize
+
+STREAM_TARGET= stream.exe
+
+# CPPDEFINES= -D VAR_A_BW=$(VAR_A_BW_VAL)
+CPPDEFINES= -D _BITSIZE_ $(CFLAGS_IN)
+
+ASC2BITSIZE=$(BITSIZE_HOME)/plfiles/asc2bs.pl
+
+include bitsize.config
+
+CFLAGS= $(CPPDEFINES) -g
+ 
+EXELFLAGS= -lbitsize -g
+
+LIBDIRS+= -L $(BITSIZE_HOME)/ad_bitsize
+INCDIRS+= -I $(BITSIZE_HOME)/ad_bitsize
+
+bitsize: $(STREAM_TARGET)
+
+
+%.exe: %.o
+	$(CC) -o $@ $^ $(LIBDIRS) $(EXELFLAGS)
+
+%.o: %_bs.cxx
+	$(CC) -c $< -o $@ $(CFLAGS) $(INCDIRS)
+
+%_bs.cxx: %.cxx
+	$(ASC2BITSIZE) $< > $@
+
+refresh: 
+	rm -f $(STREAM_TARGET)
+
+.PRECIOUS: %_bs.cxx

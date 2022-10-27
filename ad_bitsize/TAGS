@@ -1,0 +1,1326 @@
+
+bitsize_defs.h,1751
+#define _BITSIZE_DEFS_H39,1010
+using namespace std;51,1206
+enum arch_attr arch_attr53,1231
+enum arch_attr {IN 53,1231
+enum arch_attr {IN , OUT 53,1231
+enum arch_attr {IN , OUT , TMP 53,1231
+enum arch_attr {IN , OUT , TMP , OP_IN,53,1231
+enum arch_attr {IN , OUT , TMP , OP_IN, REGISTER,53,1231
+enum arch_attr {IN , OUT , TMP , OP_IN, REGISTER, MAPPED_REGISTER,53,1231
+                INTMEM,54,1300
+                INTMEM, EXTMEM0,54,1300
+                INTMEM, EXTMEM0, EXTMEM1,54,1300
+                INTMEM, EXTMEM0, EXTMEM1, EXTMEM2,54,1300
+                INTMEM, EXTMEM0, EXTMEM1, EXTMEM2, EXTMEM3,54,1300
+                EXTMEM4,55,1362
+                EXTMEM4, EXTMEM5,55,1362
+                EXTMEM4, EXTMEM5, EXTMEM6,55,1362
+                EXTMEM4, EXTMEM5, EXTMEM6, EXTMEM7,55,1362
+                EXTMEM4, EXTMEM5, EXTMEM6, EXTMEM7, ECONSTANT}55,1362
+enum sign_attr sign_attr57,1429
+enum sign_attr {UNSIGNED,57,1429
+enum sign_attr {UNSIGNED, TWOSCOMPLEMENT,57,1429
+enum sign_attr {UNSIGNED, TWOSCOMPLEMENT, SIGNMAGNITUDE,57,1429
+enum sign_attr {UNSIGNED, TWOSCOMPLEMENT, SIGNMAGNITUDE, ONESCOMPLEMENT,57,1429
+enum sign_attr {UNSIGNED, TWOSCOMPLEMENT, SIGNMAGNITUDE, ONESCOMPLEMENT, BIASED}57,1429
+typedef unsigned int fsize;fsize61,1553
+typedef arch_attr Edge_TYPE;Edge_TYPE63,1584
+typedef long long int64;int6466,1666
+#define IF(IF90,1990
+enum YesNo YesNo92,2063
+enum YesNo {NO,YesNo::NO92,2063
+enum YesNo {NO, YES}YesNo::YES92,2063
+arch_attr DefaultArch=97,2159
+sign_attr DefaultSign=98,2187
+fsize DefaultSize=99,2226
+fsize DefaultFract=100,2249
+YesNo USE_HARDMULT=101,2272
+#define OPT_BW 104,2305
+#define ERROR(ERROR114,2485
+#define DBLOG(DBLOG122,2582
+#define DBLOG(DBLOG126,2638
+
+affine_range.cpp,846
+AffineRange::AffineRange(7,78
+void AffineRange::operator()(10,237
+void AffineRange::do_affine_analysis(23,401
+void AffineRange::do_affine_analysis_node(55,1062
+double AffineRange::get_range_max(89,1735
+double AffineRange::get_range_min(126,2576
+void AffineRange::affine_const_node(187,3577
+double AffineRange::get_const_value(195,3743
+void AffineRange::affine_shiftl_node(208,3933
+void AffineRange::affine_shiftr_node(255,5023
+void AffineRange::affine_add_node(304,6118
+void AffineRange::affine_sub_node(383,7814
+double AffineRange::get_abs_eterms(466,9467
+double AffineRange::get_sum_eterms(491,9826
+void AffineRange::affine_div_node(515,10177
+void AffineRange::affine_mul_node(577,11916
+void AffineRange::affine_assign_node(671,14084
+void AffineRange::affine_input_node(688,14442
+void AffineRange::show_affine_vecs(715,15200
+
+bitsize_class.cpp,891
+int def_opt_mode 7,92
+bitsize::bitsize(9,117
+void bitsize::bitsize_main(52,1060
+void bitsize::init_passes(59,1121
+void bitsize::show_help(116,2549
+void bitsize::setup_defaults(131,2810
+void bitsize::parse_arguments(143,2950
+void bitsize::start_parse(426,7019
+void bitsize::end_parse(433,7090
+double bitsize::get_area(441,7160
+void bitsize::run_passes_pwr(450,7247
+void bitsize::run_passes_pwr_glitch(484,7992
+void bitsize::run_fixedpoint_error(503,8360
+void bitsize::run_fltpoint_error(569,9818
+void bitsize::run_lns_error(622,10796
+void bitsize::run_passes_2(678,11816
+void bitsize::run_passes(857,15835
+void bitsize::gen_ilp_code(983,18683
+void bitsize::gen_mat_testcode_fix(1009,19268
+void bitsize::gen_vhdlcode(1022,19507
+void bitsize::list_vars(1050,19992
+void bitsize::list_vars2(1103,21397
+void bitsize::test_var(1120,21592
+void bitsize::list_edges(1164,22221
+
+bitsize.h,519
+#define _BWOPT_H85,2434
+#define OPT_BW 94,2517
+typedef unsigned int fsize;fsize98,2570
+bitsize* bs;104,2675
+#define STREAM_START 107,2693
+#define STREAM_LOOP(STREAM_LOOP109,2750
+#define STREAM_END 116,3118
+#define BS_OPTIONS_START 129,3568
+#define BS_OPTIONS_LOOP_END 135,3842
+#define BS_OPTIONS_END 142,4125
+#define R_ARGS(R_ARGS157,4514
+#define _GRAPH_START 161,4613
+#define _GRAPH_END 162,4676
+#define _GRAPH_START166,4760
+#define _GRAPH_END167,4782
+#define STREAM_END_ARG(STREAM_END_ARG182,4874
+
+bitsize_pass.h,3214
+#define _BITSIZE_PASS_H80,2188
+class BitSizePass{BitSizePass86,2261
+  virtual void operator() BitSizePass::operator()113,2700
+class ErrorModel_Affine:ErrorModel_Affine127,2958
+  typedef map<Edge *, string> edge_map_string;ErrorModel_Affine::edge_map_string131,3018
+  void operator() ErrorModel_Affine::operator()187,4267
+class ErrorModel_Affine_CPP:ErrorModel_Affine_CPP191,4313
+  typedef map<Edge *, string> edge_map_string;ErrorModel_Affine_CPP::edge_map_string195,4377
+  void operator() ErrorModel_Affine_CPP::operator()254,5714
+class ErrModel_Affine_FLT_CPP:ErrModel_Affine_FLT_CPP259,5762
+  typedef map<Edge *, string> edge_map_string;ErrModel_Affine_FLT_CPP::edge_map_string263,5828
+  void operator() ErrModel_Affine_FLT_CPP::operator()324,7240
+class ErrModel_Affine_LNS_CPP:ErrModel_Affine_LNS_CPP329,7288
+  typedef map<Edge *, string> edge_map_string;ErrModel_Affine_LNS_CPP::edge_map_string333,7354
+  void operator() ErrModel_Affine_LNS_CPP::operator()394,8766
+class ErrorModel_Affine2:ErrorModel_Affine2400,8816
+  typedef map<Edge *, string> edge_map_string;ErrorModel_Affine2::edge_map_string404,8877
+  void operator() ErrorModel_Affine2::operator()459,10164
+class CostFunction:CostFunction464,10212
+  void operator() CostFunction::operator()491,10795
+class CostFunctionAreaCPP:CostFunctionAreaCPP495,10840
+  void operator() CostFunctionAreaCPP::operator()524,11451
+class CostFuncAreaFLTCPP:CostFuncAreaFLTCPP527,11494
+  void operator() CostFuncAreaFLTCPP::operator()556,12103
+class CostFuncAreaLNSCPP:CostFuncAreaLNSCPP560,12148
+  void operator() CostFuncAreaLNSCPP::operator()587,12748
+class CostFunctionPWR:CostFunctionPWR591,12793
+   void operator() CostFunctionPWR::operator()623,13435
+class ASCBackend:ASCBackend630,13489
+class MatCodeGen:MatCodeGen659,14053
+class MatCodeGenFlt:MatCodeGenFlt717,15145
+class ADDAG:ADDAG765,16065
+class PwrDataPass:PwrDataPass830,17259
+class ILPGenPass:ILPGenPass872,18045
+  void operator() ILPGenPass::operator()894,18689
+class PwrPassGlitch:PwrPassGlitch915,19017
+  struct GLITCH_PROF PwrPassGlitch::GLITCH_PROF968,20225
+class VHDLGen:VHDLGen1024,21914
+  enum SIG_TYPE VHDLGen::SIG_TYPE1038,22123
+  enum SIG_TYPE { INPUT_SIG VHDLGen::SIG_TYPE::INPUT_SIG1038,22123
+  enum SIG_TYPE { INPUT_SIG , OUTPUT_SIG VHDLGen::SIG_TYPE::OUTPUT_SIG1038,22123
+  enum SIG_TYPE { INPUT_SIG , OUTPUT_SIG , INTERNAL_SIG VHDLGen::SIG_TYPE::INTERNAL_SIG1038,22123
+  enum AC_TYPE VHDLGen::AC_TYPE1040,22185
+  enum AC_TYPE { ADD_COMP VHDLGen::AC_TYPE::ADD_COMP1040,22185
+  enum AC_TYPE { ADD_COMP , SUB_COMP VHDLGen::AC_TYPE::SUB_COMP1040,22185
+  enum AC_TYPE { ADD_COMP , SUB_COMP , MUL_COMP VHDLGen::AC_TYPE::MUL_COMP1040,22185
+  enum AC_TYPE { ADD_COMP , SUB_COMP , MUL_COMP , CMUL_COMP,VHDLGen::AC_TYPE::CMUL_COMP1040,22185
+  enum AC_TYPE { ADD_COMP , SUB_COMP , MUL_COMP , CMUL_COMP, REG_COMP}VHDLGen::AC_TYPE::REG_COMP1040,22185
+  struct COMP_TYPE{VHDLGen::COMP_TYPE1042,22260
+    COMP_TYPE(VHDLGen::COMP_TYPE::COMP_TYPE1044,22283
+  struct BW_DATA{VHDLGen::BW_DATA1056,22587
+    BW_DATA(VHDLGen::BW_DATA::BW_DATA1058,22608
+  void gen_div_node(VHDLGen::gen_div_node1074,22996
+
+bitsize_class.h,2418
+#define _BITSIZE_CLASS_H2,26
+enum OPMODE_TYPE OPMODE_TYPE68,1105
+enum OPMODE_TYPE { PARSING OPMODE_TYPE::PARSING68,1105
+enum OPMODE_TYPE { PARSING , PARSED OPMODE_TYPE::PARSED68,1105
+enum DEBUGMODE_TYPE DEBUGMODE_TYPE70,1147
+enum DEBUGMODE_TYPE { OFF DEBUGMODE_TYPE::OFF70,1147
+enum DEBUGMODE_TYPE { OFF , L1 DEBUGMODE_TYPE::L170,1147
+enum DEBUGMODE_TYPE { OFF , L1 , L2 DEBUGMODE_TYPE::L270,1147
+class bitsize{bitsize76,1250
+  enum RANGE_ANN_MODES bitsize::RANGE_ANN_MODES81,1281
+  enum RANGE_ANN_MODES { AFFINE_RANGE bitsize::RANGE_ANN_MODES::AFFINE_RANGE81,1281
+  enum RANGE_ANN_MODES { AFFINE_RANGE , INTERVAL_RANGE bitsize::RANGE_ANN_MODES::INTERVAL_RANGE81,1281
+  enum RANGE_ANN_MODES { AFFINE_RANGE , INTERVAL_RANGE , SIM_RANGE bitsize::RANGE_ANN_MODES::SIM_RANGE81,1281
+  enum RANGE_ANN_MODES { AFFINE_RANGE , INTERVAL_RANGE , SIM_RANGE , NOOPT_RANGE bitsize::RANGE_ANN_MODES::NOOPT_RANGE81,1281
+  enum PREC_ANN_MODES bitsize::PREC_ANN_MODES83,1368
+  enum PREC_ANN_MODES { AFFINE_PREC,bitsize::PREC_ANN_MODES::AFFINE_PREC83,1368
+  enum PREC_ANN_MODES { AFFINE_PREC,  AFFINE_PREC2 bitsize::PREC_ANN_MODES::AFFINE_PREC283,1368
+  enum PREC_ANN_MODES { AFFINE_PREC,  AFFINE_PREC2 , AD_PREC bitsize::PREC_ANN_MODES::AD_PREC83,1368
+  enum PREC_ANN_MODES { AFFINE_PREC,  AFFINE_PREC2 , AD_PREC , NOOPT_PREC bitsize::PREC_ANN_MODES::NOOPT_PREC83,1368
+  enum PREC_ANN_MODES { AFFINE_PREC,  AFFINE_PREC2 , AD_PREC , NOOPT_PREC , AFFINE_PREC_CPP bitsize::PREC_ANN_MODES::AFFINE_PREC_CPP83,1368
+  enum PREC_ANN_MODES { AFFINE_PREC,  AFFINE_PREC2 , AD_PREC , NOOPT_PREC , AFFINE_PREC_CPP , AD_PREC_CPP}bitsize::PREC_ANN_MODES::AD_PREC_CPP83,1368
+  enum BW_MODES bitsize::BW_MODES85,1481
+  enum BW_MODES { UNIFORM bitsize::BW_MODES::UNIFORM85,1481
+  enum BW_MODES { UNIFORM , NONUNIFORM bitsize::BW_MODES::NONUNIFORM85,1481
+  enum OPT_METRICS bitsize::OPT_METRICS87,1526
+  enum OPT_METRICS { AREA_OPT bitsize::OPT_METRICS::AREA_OPT87,1526
+  enum OPT_METRICS { AREA_OPT , POWER_OPT bitsize::OPT_METRICS::POWER_OPT87,1526
+  enum OPT_METRICS { AREA_OPT , POWER_OPT , POWER_OPT_GLITCH bitsize::OPT_METRICS::POWER_OPT_GLITCH87,1526
+  enum OPT_METRICS { AREA_OPT , POWER_OPT , POWER_OPT_GLITCH , AREA_OPT_CPP,bitsize::OPT_METRICS::AREA_OPT_CPP87,1526
+  enum OPT_METRICS { AREA_OPT , POWER_OPT , POWER_OPT_GLITCH , AREA_OPT_CPP, NO_OPT bitsize::OPT_METRICS::NO_OPT87,1526
+
+cost_function.cpp,490
+CostFunction::CostFunction(4,31
+void CostFunction::cost_function_end(6,94
+string CostFunction::state_bw(43,1395
+double CostFunction::range_bw(60,1604
+void CostFunction::gen_parameters_func(90,2234
+void CostFunction::gen_matlab_costf(175,4142
+void CostFunction::gen_ml_node_cf(328,7560
+void CostFunction::gen_ml_add_node_exp(359,7932
+void CostFunction::gen_ml_sub_node_exp(393,9074
+void CostFunction::gen_ml_mul_node_exp(416,9910
+void  CostFunction::gen_ml_div_node_exp(472,11752
+
+ascbackend.cpp,402
+ASCBackend::ASCBackend(6,70
+void ASCBackend::operator()(9,183
+void ASCBackend::do_ascbackend(17,265
+void ASCBackend::do_ascbackend_node(54,873
+void ASCBackend::gen_const_node_exp(85,1291
+void ASCBackend::gen_add_node_exp(94,1535
+void ASCBackend::gen_sub_node_exp(112,2030
+void ASCBackend::gen_mul_node_exp(129,2520
+void  ASCBackend::gen_var_decs(146,3010
+void ASCBackend::gen_header(161,3260
+
+CmdLine.h,292
+#define SACMDSH112,3507
+#define StringType 117,3584
+#define StringType 120,3663
+using namespace std 130,3864
+struct CCmdParamCCmdParam133,3940
+typedef map<StringType,StringType139,4056
+typedef map<StringType, CCmdParam> _CCmdLine;_CCmdLine139,4056
+class CCmdLine CCmdLine142,4139
+
+affine_range.h,30
+#define _RANGE_AFFINE_H5,112
+
+cost_function.h,32
+#define _COST_FUNCTION_H11,256
+
+bitsize_pass.cpp,323
+BitSizePass::BitSizePass(3,29
+void BitSizePass::init_name_maps(5,96
+void BitSizePass::gen_node_cost_names(27,484
+void BitSizePass::gen_signal_name(34,605
+int BitSizePass::get_bw_state(52,888
+double BitSizePass::get_range_bw(69,1089
+string BitSizePass::get_var_type(100,1896
+string BitSizePass::replace_str(120,2109
+
+bsclass.cpp,205
+BSClass::BSClass(6,108
+BSClass::~BSClass(19,493
+int BSClass::add_to_list(23,522
+void BSClass::test_func(41,871
+void BSClass::print_all(50,945
+void printName(63,1138
+void BSClass::show_lists(68,1210
+
+ad_dag.cpp,872
+ADDAG::ADDAG(6,59
+bool ADDAG::operator()(10,215
+void ADDAG::do_ad_analysis(44,652
+void ADDAG::do_ad_analysis_node(83,1247
+void ADDAG::find_min_max(128,2085
+void ADDAG::ad_output_node(141,2321
+void ADDAG::ad_const_node(155,2552
+void ADDAG::ad_assign_node(189,3192
+double ADDAG::get_const_value(207,3472
+void ADDAG::ad_shiftl_node(218,3622
+void ADDAG::ad_shiftr_node(269,4781
+void ADDAG::ad_add_node(322,5943
+void ADDAG::ad_sub_node(366,7019
+double ADDAG::get_abs_eterms(416,8101
+void ADDAG::ad_mul_node(441,8434
+void ADDAG::ad_div_node(495,9743
+double ADDAG::read_from_file(553,11250
+void ADDAG::ad_input_node(572,11462
+void ADDAG::show_ad_vecs(606,12154
+void ADDAG::gen_func_body(659,13602
+void ADDAG::gen_signal_errorname(701,14462
+void ADDAG::gen_errvalues(713,14654
+void ADDAG::get_abs_eterms(732,14955
+void ADDAG::gen_matlab_err_func(766,15398
+
+bwoptfix.cpp,1694
+#define  _BITSIZE_DEBUG4,86
+BWOPTfix::BWOPTfix(9,161
+void BWOPTfix::find_bw(19,248
+void BWOPTfix::find_frac_bw(54,627
+void BWOPTfix::frac_method1(93,1265
+void BWOPTfix::frac_method2(101,1355
+void BWOPTfix::frac_method3(118,1696
+p_err 231,4139
+done 233,4162
+int add_iter 235,4180
+int sub_iter 237,4201
+int mul_iter 239,4222
+int input_iter 242,4245
+int l1_itr 245,4270
+int l2_itr 246,4287
+int l1_itr_max 248,4306
+vector<dag_index>::iterator edg_itr;251,4332
+        int ctr;324,5635
+        HWfix *tempvar;326,5655
+	for( ctr = 0, bwt_itr = bw_table.begin() ; ctr < no_of_vars 327,5680
+	  tempvar 335,5944
+void BWOPTfix::frac_method4(357,6546
+for( ctr = 0, min_bwt_itr = min_bw_table.begin() ; ctr < no_of_vars 467,9076
+void BWOPTfix::find_int_bw(478,9360
+double BWOPTfix::find_output_err(523,10381
+double BWOPTfix::find_output_err(556,11072
+void BWOPTfix::frac_method5(601,12122
+double find_ouput_err5(674,13860
+void BWOPTfix::frac_method6(699,14328
+  typedef vector< double > grad_vector_type;grad_vector_type733,15045
+#define grad_vector 772,16080
+#define USE_LINEAR_SEARCH774,16119
+#define MAX_TRIES 796,16696
+int BWOPTfix::find_uniform_bw_linear(829,17599
+void BWOPTfix::find_uniform_bw_binary(861,18275
+void BWOPTfix::inc_bw_vec(891,18940
+void BWOPTfix::show_bw_vector(903,19169
+void BWOPTfix::show_bw_vector(916,19458
+double BWOPTfix::find_best_bw_vector(933,19738
+double BWOPTfix::try_selected_vectors(963,20564
+double BWOPTfix::try_selected_vectors(984,21172
+int BWOPTfix::generate_random_bit(1041,22633
+double BWOPTfix::find_error(1076,23082
+BWOPTfix::COST_RETURN BWOPTfix::cost_function(1097,23698
+void BWOPTfix::setup_max_grads(1139,24784
+
+bw_results_gen.cpp,186
+BWResultsGen::BWResultsGen(3,31
+void BWResultsGen::gen_bitsize_dat(5,97
+void BWResultsGen::gen_fixed_data(59,1022
+fsize fix_exp_bw(87,1584
+void BWResultsGen::gen_float_data(98,1784
+
+bwoptfix.h,203
+#define _BWOPTFIX_H34,1010
+using namespace std;48,1190
+class BWOPTfix BWOPTfix50,1214
+  }COST_RETURN;BWOPTfix::COST_RETURN68,1477
+  typedef vector< int > bw_vec_type;BWOPTfix::bw_vec_type70,1498
+
+areamodel.h,61
+#define AREA_MODEL_H9,174
+class AreaModel{AreaModel13,218
+
+dag.cpp,854
+varnames *edge_names;87,2557
+varnames *node_names;88,2580
+varnames *const_names;89,2603
+varnames *hwint_names;90,2627
+varnames *assign_names;91,2651
+DAG::DAG(93,2678
+void DAG::add_to_list(134,3897
+void DAG::sort_edges(174,4692
+Node* DAG::new_node(195,5047
+Node* DAG::new_const_node(214,5464
+Node* DAG::new_assign_node(226,5771
+Node* DAG::new_hwint_node(246,6197
+Edge* DAG::new_edge(278,6837
+Edge* DAG::new_edge(289,7000
+Edge* DAG::new_const_edge(310,7395
+Edge* DAG::new_hwint_edge(330,7811
+Edge* DAG::add_out_edge(347,8144
+Edge* DAG::add_in_edge(362,8439
+Node* DAG::add_op_node(395,8869
+void DAG::print_dag(411,9118
+void DAG::print_dot_graph(483,10533
+void DAG::print_dot_graph2(532,12119
+void DAG::update_edge_grads(651,15124
+void DAG::show_edge_grads(687,16009
+void DAG::list_edges(713,16420
+Node* DAG::get_src_node(749,16989
+
+bsclass.h,167
+#define _BSClass_H_2,21
+using namespace std;16,294
+	typedef vector<advar *> advar_veclist;advar_veclist26,390
+	typedef list<advar *> advar_list;advar_list30,480
+
+datalog.h,28
+class DataLog{DataLog3,44
+
+CmdLine.cpp,233
+int CCmdLine::SplitLine(46,1619
+bool CCmdLine::IsSwitch(121,3432
+bool CCmdLine::HasSwitch(160,4392
+StringType CCmdLine::GetSafeArgument(188,5291
+StringType CCmdLine::GetArgument(224,6178
+int CCmdLine::GetArgumentCount(254,6879
+
+areamodel.cpp,62
+AreaModel::AreaModel(5,52
+double AreaModel::get_area(14,121
+
+bw_results_gen.h,72
+#define _BW_RESULTS_GEN_H8,150
+class BWResultsGen{BWResultsGen12,199
+
+datalog.cpp,88
+DataLog::DataLog(3,22
+void DataLog::operator()(6,125
+void DataLog::cal_values(35,467
+
+dag.h,263
+#define _DAG_H64,1751
+using namespace std;71,1868
+typedef unsigned int dag_index;dag_index73,1892
+typedef dag_index DAG_NODE;DAG_NODE74,1925
+typedef dag_index DAG_EDGE;DAG_EDGE75,1954
+class DAG{DAG95,2212
+  inline Edge* get_edge(DAG::get_edge131,3266
+
+cost_function_pwr.cpp,529
+CostFunctionPWR::CostFunctionPWR(4,31
+void CostFunctionPWR::cost_function_end(6,117
+string CostFunctionPWR::state_bw(43,1265
+double CostFunctionPWR::range_bw(60,1477
+void CostFunctionPWR::gen_parameters_func(88,2106
+void CostFunctionPWR::gen_matlab_costf(184,4311
+void CostFunctionPWR::gen_ml_node_cf(342,7952
+void CostFunctionPWR::gen_ml_add_node_exp(373,8327
+void CostFunctionPWR::gen_ml_sub_node_exp(425,10434
+void CostFunctionPWR::gen_ml_mul_node_exp(471,12244
+void  CostFunctionPWR::gen_ml_div_node_exp(520,13940
+
+errormodel.h,66
+#define _ERRORMODEL_H30,874
+class ErrorModel{ErrorModel43,1015
+
+errormodel_affine2.cpp,1005
+ErrorModel_Affine2::ErrorModel_Affine2(5,62
+void ErrorModel_Affine2::do_affine_analysis(9,253
+void ErrorModel_Affine2::do_affine_analysis_node(45,888
+void ErrorModel_Affine2::get_abs_eterms(90,1657
+void ErrorModel_Affine2::affine_const_node_exp(125,2193
+void ErrorModel_Affine2::affine_assign_node(153,2708
+void ErrorModel_Affine2::affine_add_node(168,3014
+void ErrorModel_Affine2::affine_sub_node(215,4199
+void ErrorModel_Affine2::affine_mul_node(267,5378
+void ErrorModel_Affine2::affine_div_node(324,7069
+void ErrorModel_Affine2::affine_shiftl_node(375,8713
+void ErrorModel_Affine2::affine_shiftr_node(424,9929
+void ErrorModel_Affine2::gen_signal_bwname(477,11104
+void ErrorModel_Affine2::gen_signal_errorname(491,11341
+void ErrorModel_Affine2::gen_signal_err_expr(510,11654
+void ErrorModel_Affine2::affine_input_node(522,11865
+void ErrorModel_Affine2::show_affine_vecs(543,12328
+void ErrorModel_Affine2::gen_errvalues(578,13162
+void ErrorModel_Affine2::gen_matlab_err_func(599,13561
+
+bitsize_dbg.h,438
+#define BITSIZE_DBG_H5,109
+#define _DBOUT(_DBOUT9,160
+#define _SHOW_VAR(_SHOW_VAR10,243
+#define _DBOUT(_DBOUT15,308
+enum BWStateType{BWStateType19,344
+enum BWStateType{ SET 19,344
+enum BWStateType{ SET , NOTSET 19,344
+inline void ReportError(24,433
+#define USER_ASSERT(USER_ASSERT29,519
+#define INTERNAL_ASSERT(INTERNAL_ASSERT36,743
+#define ASSERT(ASSERT43,964
+#define INTERNAL_ASSERT_EXIT(INTERNAL_ASSERT_EXIT51,1158
+
+errormodel_affine.h,36
+#define _ERRORMODEL_AFFINE_H19,463
+
+ad_dag.h,24
+#define _AD_DAG_H5,100
+
+advar.cpp,3666
+#define _DEBUGOUT90,2474
+#define SETDB 95,2523
+#define MPDB(MPDB96,2556
+#define SETDB98,2625
+#define MPDB(MPDB99,2640
+#define _logb 104,2691
+size_t advar::var_count 111,2787
+bool advar::auto_numbering 113,2819
+list<advar *> advar::named_vars;118,2918
+BSClass advar::BS;120,2954
+double advar::log2(126,3019
+double advar::get_exp_value(136,3149
+void advar::advar_setup(144,3270
+void advar::initvar(153,3423
+advar::advar(187,3916
+advar::advar(208,4150
+advar::advar(226,4337
+advar::advar(241,4515
+advar::advar(258,4803
+void advar::copy(276,5054
+advar::~advar(291,5262
+void advar::set_var_name(297,5353
+advar& advar::operator = 304,5458
+advar& advar::operator = 327,5786
+advar::operator DTYPE(386,6981
+void advar::set_indep(396,7097
+advar& advar::operator <<= 410,7280
+advar& advar::operator <<= 434,7657
+void advar::reset_grad_vec(464,8200
+void advar::set_depend(477,8359
+DTYPE advar::operator[](501,8874
+DTYPE advar::operator[](512,9016
+advar& advar::operator += 524,9176
+const advar operator + 538,9340
+const advar operator + 547,9498
+const advar operator + 557,9655
+advar& advar::operator -= 587,10204
+const advar operator - 600,10367
+const advar operator - 611,10527
+const advar operator - 619,10681
+advar& advar::operator *= 646,11212
+const advar operator * 660,11382
+const advar operator * 671,11546
+const advar operator * 681,11707
+advar& advar::operator /= 721,12537
+const advar operator / 735,12707
+const advar operator / 746,12867
+const advar operator / 757,13026
+const advar pow(793,13734
+const advar exp(814,14212
+const advar log(829,14524
+const advar sin(845,14826
+const advar cos(865,15218
+string advar::get_var_name(887,15643
+DTYPE advar::get_m_bw(893,15703
+DTYPE advar::get_e_bw(898,15758
+DTYPE advar::get_i_bw(904,15815
+DTYPE advar::get_f_bw(909,15869
+void advar::analyse_flt_e_bw(914,15924
+ostream& operator << 952,16698
+istream& operator >> 999,17894
+void advar::print_mbw(1015,18027
+void advar::print_table_flt(1048,18826
+void advar::print_VHDL_flt_bw(1087,19673
+void advar::output_bitspec(1103,20160
+void advar::output_bitspec2(1128,20688
+void advar::print_table_fx(1155,21301
+void advar::analyse_bw_flt(1188,22184
+#define DTYPE_2 1190,22230
+void advar::analyse_bw_ulp_flt(1228,23167
+void advar::analyse_bw_flt_mbw(1276,24408
+void advar::analyse_bw_flt_mbw(1284,24534
+void advar::analyse_bw_ulp_fx(1316,25187
+void advar::analyse_bw_fx_fracbw(1364,26365
+void advar::analyse_bw_fx_1(1390,26878
+void advar::analyse_bw_fx_2(1430,27906
+void advar::analyse_bw_fx_3(1518,29602
+void advar::analyse_bw_fx_4(1665,32577
+for( ctr = 0, min_bwt_itr = min_bw_table.begin() ; ctr < no_of_vars 1735,34280
+DTYPE advar::get_output_err_fx(1752,34767
+void advar::analyse_bw_fx(1780,35279
+void advar::analyse_fx_int_bw(1835,36532
+void advar::print_flt_mat(1870,37283
+void advar::print_flt_dfg(1888,37810
+void advar::print_fx_mat(1904,38156
+void advar::print_fx_dfg(1921,38717
+void advar::set_error(1937,39077
+void advar::find_bitwidths(1944,39148
+void advar::analyse2_bw_flt(1970,39821
+void advar::analyse2_bw_ulp_flt(1986,40103
+void advar::bw_method2(1995,40237
+void advar::analyse3_bw_flt(2071,41680
+void advar::analyse3_bw_ulp_flt(2086,41960
+void advar::bw_method3(2095,42072
+DTYPE advar::get_output_err_flt(2224,44413
+void advar::analyse4_bw_flt(2260,45182
+void advar::analyse4_bw_ulp_flt(2275,45462
+void advar::bw_method4(2285,45576
+for( ctr = 0, min_bwt_itr = min_bw_table.begin() ; ctr < no_of_vars 2339,46735
+	BS.advar_vec[2342,46834
+	BS.advar_vec[ctr]->m_bitwidth 2342,46834
+void advar::print_flt_make_defs(2353,46953
+void advar::print_grads_vec(2376,47504
+
+edge.cpp,135
+Edge::Edge(5,25
+Edge::~Edge(33,318
+void Edge::copy(39,345
+dag_index Edge::get_src_node(49,444
+dag_index Edge::get_dst_node(57,519
+
+advar.h,713
+#define _AD_VAR_H125,3601
+using namespace std;140,3836
+#define BRK_PT 145,3917
+#define _DLLDEC_AD163,4171
+#define AD_DEFAULT 167,4203
+#define AD_AUTONUM 168,4228
+#define DTYPE 176,4331
+#define MAX(MAX178,4355
+#define MIN(MIN179,4405
+#define MAX_VAL(MAX_VAL181,4457
+#define MIN_VAL(MIN_VAL183,4534
+#define ABS_AD(ABS_AD185,4611
+  enum advarType{advarType202,4771
+  enum advarType{ IN advarType::IN202,4771
+  enum advarType{ IN , OUT advarType::OUT202,4771
+  enum advarType{ IN , OUT , TMP advarType::TMP202,4771
+  enum advarType{ IN , OUT , TMP , AUTO_TMP advarType::AUTO_TMP202,4771
+  typedef vector<DTYPE>::iterator iter_t;iter_t204,4821
+  advar& operator >>= operator >>=288,6579
+
+edge.h,72
+#define _EDGE_H_2,18
+class Edge{Edge16,237
+  Edge(Edge::Edge21,326
+
+errormodel.cpp,830
+ErrorModel::ErrorModel(5,31
+void ErrorModel::gen_matlab_errfiles(8,210
+void ErrorModel::gen_error_exp(43,698
+void ErrorModel::gen_output_vector(110,1843
+void ErrorModel::gen_parameters_func(159,2875
+void cost_function_end(193,3484
+void ErrorModel::gen_node_cost_func(212,3783
+void ErrorModel::gen_node_error_exp(271,5122
+void ErrorModel::gen_signal_bwname(313,5818
+void ErrorModel::gen_signal_bwname(327,6059
+void ErrorModel::gen_signal_err_expr(367,6561
+void ErrorModel::gen_input_node_exp(375,6715
+void ErrorModel::gen_add_node_exp(405,7367
+string ErrorModel::propagated_error(496,9441
+void ErrorModel::gen_const_node_exp(529,10024
+double ErrorModel::get_const_value(563,10711
+void ErrorModel::gen_mul_node_exp(574,10866
+void ErrorModel::gen_sub_node_exp(674,13777
+void ErrorModel::gen_div_node_exp(679,13885
+
+errormodel_affine.cpp,942
+ErrorModel_Affine::ErrorModel_Affine(5,62
+void ErrorModel_Affine::do_affine_analysis(9,251
+void ErrorModel_Affine::do_affine_analysis_node(45,885
+string ErrorModel_Affine::get_abs_eterms(90,1652
+void ErrorModel_Affine::affine_const_node_exp(140,2547
+void ErrorModel_Affine::affine_assign_node(172,3155
+void ErrorModel_Affine::affine_add_node(186,3455
+void ErrorModel_Affine::affine_sub_node(304,5432
+void  ErrorModel_Affine::affine_div_node(416,7402
+void ErrorModel_Affine::affine_mul_node(586,11470
+void ErrorModel_Affine::affine_shiftl_node(714,13654
+void ErrorModel_Affine::affine_shiftr_node(796,15337
+void ErrorModel_Affine::gen_signal_bwname(880,16997
+void ErrorModel_Affine::gen_signal_errorname(894,17233
+void ErrorModel_Affine::gen_signal_err_expr(912,17496
+void ErrorModel_Affine::affine_input_node(924,17706
+void ErrorModel_Affine::show_affine_vecs(952,18372
+void ErrorModel_Affine::gen_matlab_err_func(988,19204
+
+range_analysis.cpp,377
+RangeAnalysis::RangeAnalysis(3,31
+void RangeAnalysis::update_bw(6,136
+void RangeAnalysis::update_bw_fx(25,400
+void RangeAnalysis::update_bw_flt(50,778
+void RangeAnalysis::update_bw_lns(73,1119
+double RangeAnalysis::range_bw_flt(98,1460
+double RangeAnalysis::range_bw_fx(168,2969
+double RangeAnalysis::range_bw_lns(222,4071
+void RangeAnalysis::show_range_vecs(281,5132
+
+optbw_flt_cpp.cpp,329
+OptBWFLT_cpp::OptBWFLT_cpp(3,20
+void OptBWFLT_cpp::run_adanalysis(5,109
+void OptBWFLT_cpp::gen_func_body(36,526
+double OptBWFLT_cpp::get_emax(95,1702
+void OptBWFLT_cpp::gen_func_top(107,1967
+void OptBWFLT_cpp::gen_error_func(165,3072
+void  OptBWFLT_cpp::update_edges(209,3977
+void OptBWFLT_cpp::update_edges_uni(243,4534
+
+hwvar.h,776
+#define _HWVAR_H65,1756
+using namespace std;75,1880
+#define HWabs(HWabs101,2231
+class range{range110,2346
+  range(range::range113,2371
+class R_ERR{R_ERR122,2477
+  R_ERR(R_ERR::R_ERR124,2500
+class HWvar{HWvar135,2673
+  enum VAR_DTYPE HWvar::VAR_DTYPE139,2702
+  enum VAR_DTYPE { DECVAR HWvar::VAR_DTYPE::DECVAR139,2702
+  enum VAR_DTYPE { DECVAR , TMPVAR HWvar::VAR_DTYPE::TMPVAR139,2702
+  enum VAR_DTYPE { DECVAR , TMPVAR  , VECVAR}HWvar::VAR_DTYPE::VECVAR139,2702
+  virtual string print_dot_bitinfo(HWvar::print_dot_bitinfo188,3476
+class  HWfix HWfix205,3749
+class  HWfloat HWfloat441,10154
+  string print_dot_bitinfo(HWfloat::print_dot_bitinfo492,11220
+class  HWlns HWlns533,12229
+  string print_dot_bitinfo(HWlns::print_dot_bitinfo584,13267
+
+optengine.cpp,225
+OptEngine::OptEngine(4,25
+OptEngine::~OptEngine(53,945
+void OptEngine::run_optimization(62,1072
+void OptEngine::update_edges(202,4093
+void OptEngine::update_edges_uni(242,5019
+void OptEngine::print_opt_summary(282,5924
+
+cost_func_area_flt_cpp.cpp,556
+CostFuncAreaFLTCPP::CostFuncAreaFLTCPP(4,31
+void CostFuncAreaFLTCPP::cost_function_end(6,120
+string CostFuncAreaFLTCPP::state_bw(31,1056
+double CostFuncAreaFLTCPP::range_bw(43,1243
+void CostFuncAreaFLTCPP::gen_parameters_func(98,2576
+void CostFuncAreaFLTCPP::gen_costf(141,3688
+void CostFuncAreaFLTCPP::gen_ml_node_cf(294,6637
+void CostFuncAreaFLTCPP::gen_ml_add_node_exp(325,7015
+void CostFuncAreaFLTCPP::gen_ml_sub_node_exp(359,8115
+void CostFuncAreaFLTCPP::gen_ml_mul_node_exp(382,8905
+void  CostFuncAreaFLTCPP::gen_ml_div_node_exp(451,11160
+
+optbw.h,693
+#define OPTBW_H 6,99
+typedef struct  dbl_ints dbl_ints15,228
+} DBL_INT;DBL_INT18,300
+typedef struct  dbl_flds dbl_flds21,316
+} DBL_FLD;DBL_FLD26,568
+typedef union   dbl_prec dbl_prec29,584
+} DBL_PREC;DBL_PREC33,706
+class OptBW{OptBW36,723
+   typedef vector< int > bw_vec_type;OptBW::bw_vec_type41,815
+  virtual double get_area_cost(OptBW::get_area_cost82,1442
+  virtual bool get_output_err(OptBW::get_output_err98,1956
+  virtual  void create_vectors(OptBW::create_vectors102,2063
+class OptBW_flt:OptBW_flt107,2111
+class OptBW_fx:OptBW_fx136,2688
+class OptBW_cpp:OptBW_cpp165,3152
+class OptBWFLT_cpp:OptBWFLT_cpp190,3528
+class OptBWLNS_cpp:OptBWLNS_cpp216,3945
+
+hwint.h,48
+#define _HWINT_H5,98
+class HWint HWint15,189
+
+optbw.cpp,586
+OptBW::OptBW(4,24
+void OptBW::get_max_ad(7,152
+void OptBW::get_max_ad(27,439
+void OptBW::ad_error_func_gen(67,1204
+void OptBW::get_max_ad2(93,1589
+void OptBW::get_max_ad2(113,1930
+void OptBW::find_nuf_fbw(161,2937
+#define MAX_TRIES 164,2970
+void OptBW::show_bw_vector(211,3966
+void OptBW::save_bw_vector(229,4245
+void OptBW::swap_vectors(243,4537
+double OptBW::get_rand_val(268,4943
+int OptBW::generate_random_bit(275,5037
+void OptBW::set_fbw(308,5614
+bool OptBW::accept_bw_vector(325,5942
+bool OptBW::get_output_err(374,6724
+void OptBW::create_new_bw_vectors(394,7069
+
+pwr_glitch_costfunc.cpp,561
+void PwrPassGlitch::MAT_G_Prof_Add_ng(4,28
+void PwrPassGlitch::MAT_G_Prof_Sub_ng(34,920
+void PwrPassGlitch::MAT_G_Prof_Mul_ng(64,1811
+void PwrPassGlitch::MAT_G_Prof_Add(122,3243
+void PwrPassGlitch::MAT_G_Prof_Sub(154,3980
+void PwrPassGlitch::MAT_G_Prof_Mul(186,4715
+void PwrPassGlitch::MAT_G_Prof_CShift_r(251,6114
+void PwrPassGlitch::MAT_G_Prof_CShift_l(274,6732
+void PwrPassGlitch::MAT_G_Prof_Input(297,7354
+void PwrPassGlitch::pwr_cost_header(315,7650
+void PwrPassGlitch::pwr_cost_footer(387,9262
+void PwrPassGlitch::gen_parameters_func(413,9610
+
+hwint.cpp,1495
+HWint::HWint(4,42
+HWint& HWint::operator=(19,278
+HWint& HWint::operator=(27,369
+HWint& HWint::operator=(36,469
+HWint HWint::operator[](52,786
+HWint HWint::operator[](69,1054
+HWint& HWint::operator+= 87,1363
+HWint::operator int(96,1461
+HWint& HWint::operator-= 103,1517
+HWint& HWint::operator*= 112,1615
+HWint& HWint::operator/= 120,1711
+HWint& HWint::operator%= 128,1807
+HWint& HWint::operator|= 135,1900
+HWint& HWint::operator&= 142,1994
+HWint& HWint::operator^= 149,2088
+HWint& HWint::operator+= 156,2181
+HWint& HWint::operator-= 161,2258
+HWint& HWint::operator*= 166,2335
+HWint& HWint::operator/= 171,2412
+HWint& HWint::operator%= 176,2489
+HWint& HWint::operator|= 181,2566
+HWint& HWint::operator&= 186,2643
+HWint& HWint::operator^= 193,2726
+HWint& HWint::operator++ 199,2805
+HWint& HWint::operator-- 210,2922
+HWint operator+ 220,3035
+HWint operator+ 229,3169
+HWint operator+ 241,3293
+HWint operator- 253,3420
+HWint operator- 262,3554
+HWint operator- 274,3678
+HWint operator* 286,3805
+HWint operator* 295,3939
+HWint operator* 307,4063
+HWint operator/ 318,4188
+HWint operator/ 327,4322
+HWint operator/ 339,4446
+HWint operator>> 352,4575
+HWint operator>> 362,4718
+HWint operator>> 373,4844
+HWint operator<< 387,4978
+HWint operator<< 400,5121
+HWint operator<< 411,5253
+HWint operator> 423,5387
+HWint operator> 438,5533
+HWint operator> 450,5660
+HWint operator< 463,5789
+HWint operator< 478,5935
+HWint operator< 490,6062
+HWint op_encoder(502,6189
+
+hwfloat.cpp,908
+void HWfloat::init(18,351
+void HWfloat::init(26,423
+HWfloat::HWfloat(137,3214
+HWfloat::HWfloat(148,3361
+HWfloat::HWfloat(171,3793
+HWfloat::~HWfloat(246,5394
+HWfloat::HWfloat 252,5427
+double HWfloat::get_val(258,5511
+HWfloat& HWfloat::operator= 264,5589
+HWfloat& HWfloat::operator= 307,6217
+HWfloat& HWfloat::operator<<= 343,6901
+void HWfloat::analyse_bw(354,7003
+void HWfloat::output_results(376,7354
+void HWfloat::print_advar(447,9512
+HWfloat operator+ 460,9664
+HWfloat operator+ 480,10063
+HWfloat operator+ 502,10533
+HWfloat operator- 526,11006
+HWfloat operator- 549,11423
+HWfloat operator- 570,11893
+HWfloat operator* 590,12352
+HWfloat operator* 609,12748
+HWfloat operator* 630,13213
+HWfloat operator/ 652,13679
+HWfloat operator/ 671,14075
+HWfloat operator/ 692,14540
+HWfloat operator<< 714,15006
+void HWfloat::read_inputdata(725,15141
+void HWfloat::output_analysis(736,15226
+
+cost_func_area_cpp.cpp,567
+CostFunctionAreaCPP::CostFunctionAreaCPP(4,31
+void CostFunctionAreaCPP::cost_function_end(6,122
+string CostFunctionAreaCPP::state_bw(25,839
+double CostFunctionAreaCPP::range_bw(37,1027
+void CostFunctionAreaCPP::gen_parameters_func(67,1664
+void CostFunctionAreaCPP::gen_costf(103,2708
+void CostFunctionAreaCPP::gen_ml_node_cf(314,7108
+void CostFunctionAreaCPP::gen_ml_add_node_exp(345,7487
+void CostFunctionAreaCPP::gen_ml_sub_node_exp(379,8588
+void CostFunctionAreaCPP::gen_ml_mul_node_exp(402,9379
+void  CostFunctionAreaCPP::gen_ml_div_node_exp(467,11479
+
+optbw_fx.cpp,253
+OptBW_fx::OptBW_fx(5,43
+void OptBW_fx::operator() 10,162
+void OptBW_fx::create_vectors(77,1391
+int OptBW_fx::find_uf_fbw(104,1916
+double OptBW_fx::get_area_cost(134,2226
+double OptBW_fx::update_bws(154,2629
+bool OptBW_fx::get_output_err(221,4050
+
+node.cpp,255
+Node::Node(61,1667
+Node::~Node(79,2020
+double Node::get_fixed_area_usage(85,2049
+double Node::get_float_area_usage(154,3698
+double Node::get_fixed_area_usage(224,5337
+double Node::get_float_area_usage(355,8338
+double Node::get_area_usage(487,11381
+
+optengine.h,182
+#define OPTENGINE_H2,20
+typedef int (*ParamFunc)ParamFunc21,220
+typedef int (*ErrFunc)ErrFunc23,277
+typedef double (*CostFunc)CostFunc25,347
+class OptEngine{OptEngine27,470
+
+hwfix.cpp,1379
+BWOPTfix bw_opt;121,3354
+vector<HWvector<HWfix>* > HWfix::vec_c;123,3374
+void HWfix::fix_vecbitwidths(126,3419
+void HWfix::init(160,4223
+HWfix::HWfix(180,4446
+HWfix::HWfix(193,4706
+void HWfix::init(238,5798
+HWfix::HWfix(358,8672
+HWfix::~HWfix(376,8945
+HWfix::HWfix 382,9017
+HWfix& HWfix::operator= 398,9227
+HWfix& HWfix::operator= 437,9873
+HWfix& HWfix::operator= 470,10513
+HWint HWfix::operator[](495,11006
+HWfix operator+ 518,11465
+HWfix operator+ 537,11857
+HWfix operator+ 557,12316
+HWfix operator+ 578,12776
+HWfix operator+ 605,13536
+HWfix operator- 631,14174
+HWfix operator- 657,14704
+HWfix operator- 680,15172
+HWfix operator* 701,15628
+HWfix operator* 721,16020
+HWfix operator* 743,16480
+HWfix operator/ 765,16944
+HWfix operator/ 788,17343
+HWfix operator/ 810,17798
+void HWfix::output_analysis(834,18314
+void HWfix::setup_max_grads(854,18661
+void HWfix::output_analysis2(871,18923
+void print_bwdata(899,19432
+void HWfix::output_results(930,20371
+void print_bwdata2(965,21307
+void HWfix::output_results2(990,21977
+string HWfix::print_dot_bitinfo(1027,22911
+HWint operator> 1046,23190
+HWint operator> 1059,23359
+HWint operator> 1073,23512
+HWint operator> 1085,23660
+HWint operator> 1098,23809
+HWfix operator>> 1112,23960
+HWfix operator>> 1133,24476
+HWfix operator<< 1158,24993
+HWfix operator<< 1184,25519
+HWint op_lod(1213,26120
+
+hwfix.h,26
+#define _HWFIX_H_58,1528
+
+hwfloat.h,146
+#define _HWFLOAT_H_28,769
+#define DATA_STREAM_END 46,1168
+#define DATA_STREAM_END_ARG(DATA_STREAM_END_ARG47,1222
+using namespace std;59,1430
+
+pwrdata.cpp,674
+PwrDataPass::PwrDataPass(7,102
+bool PwrDataPass::operator()(10,253
+bool PwrDataPass::do_pwrdata_fullsim(23,409
+void PwrDataPass::do_pwrdata_sim(58,806
+void PwrDataPass::do_pwrdata_sim_node(94,1361
+double PwrDataPass::read_from_file(139,2170
+void PwrDataPass::sim_const_node(157,2368
+void PwrDataPass::sim_input_node(167,2563
+void PwrDataPass::sim_add_node(198,3013
+void PwrDataPass::sim_sub_node(213,3335
+void PwrDataPass::sim_mul_node(227,3654
+void PwrDataPass::sim_div_node(258,4264
+void PwrDataPass::sim_shiftl_node(272,4583
+void PwrDataPass::sim_shiftr_node(288,4982
+void  PwrDataPass::sim_output_node(301,5376
+void PwrDataPass::sim_assign_node(317,5632
+
+range_analysis.h,444
+#define _RANGE_AFFINE_H5,114
+class RangeAnalysis{RangeAnalysis12,189
+  virtual void operator()(RangeAnalysis::operator()20,328
+  virtual double get_range_max(RangeAnalysis::get_range_max22,361
+  virtual double get_range_min(RangeAnalysis::get_range_min24,411
+class AffineRange:AffineRange45,727
+class IntervalRange:IntervalRange88,1631
+  struct INTERVAL_TYPE{IntervalRange::INTERVAL_TYPE92,1689
+class SimRange:SimRange134,2593
+
+node_sched.h,150
+#define _NODE_SCHED_H19,527
+class NodeSchedular{NodeSchedular26,598
+  typedef vector<dag_index> node_vec_type;NodeSchedular::node_vec_type30,635
+
+varnames.cpp,128
+varnames::varnames(8,132
+varnames::~varnames(20,329
+string varnames::gen_varname(27,368
+string varnames::gen_varname(62,775
+
+hwvar.cpp,305
+#define BITSIZE_DEFS58,1435
+dag_index HWvar::var_count 69,1687
+HWvar::HWvar(71,1722
+HWvar::~HWvar(77,1750
+HWvar::HWvar(84,1781
+HWvar::operator double(149,3097
+int HWvar::read_inputs(156,3175
+void HWvar::add_varcollection(176,3500
+void HWvar::reset_vars(223,4236
+double HWvar::round_val(235,4432
+
+ilpgen.cpp,458
+ILPGenPass::ILPGenPass(5,78
+void ILPGenPass::gen_ilp_node_cf(8,246
+void ILPGenPass::gen_ilp_costfunc(38,624
+double ILPGenPass::range_bw(95,1687
+void ILPGenPass::gen_ilp_add_node_exp(122,2309
+void ILPGenPass::gen_ilp_sub_node_exp(161,3540
+void ILPGenPass::gen_ilp_mul_node_exp(191,4390
+void ILPGenPass::gen_binvar(242,5806
+void ILPGenPass::gen_error_const(252,5957
+void ILPGenPass::gen_varnames_list(294,6710
+void ILPGenPass::list_binvars(311,6947
+
+node.h,1613
+#define _NODE_H50,1342
+enum Node_OPTYPE Node_OPTYPE55,1399
+enum Node_OPTYPE { INPUT 55,1399
+enum Node_OPTYPE { INPUT , OUTPUT 55,1399
+enum Node_OPTYPE { INPUT , OUTPUT , ADD 55,1399
+enum Node_OPTYPE { INPUT , OUTPUT , ADD , SUB 55,1399
+enum Node_OPTYPE { INPUT , OUTPUT , ADD , SUB , MUL 55,1399
+enum Node_OPTYPE { INPUT , OUTPUT , ADD , SUB , MUL , DIV 55,1399
+enum Node_OPTYPE { INPUT , OUTPUT , ADD , SUB , MUL , DIV , MOD 55,1399
+enum Node_OPTYPE { INPUT , OUTPUT , ADD , SUB , MUL , DIV , MOD , SHIFTL 55,1399
+enum Node_OPTYPE { INPUT , OUTPUT , ADD , SUB , MUL , DIV , MOD , SHIFTL , SHIFTR,55,1399
+enum Node_OPTYPE { INPUT , OUTPUT , ADD , SUB , MUL , DIV , MOD , SHIFTL , SHIFTR, CONSTANT 55,1399
+enum Node_OPTYPE { INPUT , OUTPUT , ADD , SUB , MUL , DIV , MOD , SHIFTL , SHIFTR, CONSTANT , HWINT 55,1399
+enum Node_OPTYPE { INPUT , OUTPUT , ADD , SUB , MUL , DIV , MOD , SHIFTL , SHIFTR, CONSTANT , HWINT , START 55,1399
+enum Node_OPTYPE { INPUT , OUTPUT , ADD , SUB , MUL , DIV , MOD , SHIFTL , SHIFTR, CONSTANT , HWINT , START , END,55,1399
+enum Node_OPTYPE { INPUT , OUTPUT , ADD , SUB , MUL , DIV , MOD , SHIFTL , SHIFTR, CONSTANT , HWINT , START , END, ASSIGN 55,1399
+enum Node_Arithmetic_TYPE Node_Arithmetic_TYPE56,1525
+enum Node_Arithmetic_TYPE { INTEGER 56,1525
+enum Node_Arithmetic_TYPE { INTEGER , FIXED 56,1525
+enum Node_Arithmetic_TYPE { INTEGER , FIXED , FLOAT 56,1525
+enum Node_Arithmetic_TYPE { INTEGER , FIXED , FLOAT , LNS 56,1525
+enum Node_Arithmetic_TYPE { INTEGER , FIXED , FLOAT , LNS , AT_NOTSET 56,1525
+using namespace std;68,1718
+class Node{Node75,1789
+
+varcollections.h,235
+#define _VARCOLLECTIONS_H16,459
+using namespace std;24,530
+class varcollectionsvarcollections27,574
+  varcollections(varcollections::varcollections31,610
+  typedef typename list<T>::iterator iter_t;varcollections::iter_t42,732
+
+mat_code_gen_flt.cpp,669
+MatCodeGenFlt::MatCodeGenFlt(6,70
+void MatCodeGenFlt::operator()(9,246
+void MatCodeGenFlt::do_matcodegen(17,331
+void MatCodeGenFlt::do_matcodegen_node(58,980
+int MatCodeGenFlt::set_signal_order(94,1564
+void MatCodeGenFlt::gen_const_node_exp(137,2149
+void MatCodeGenFlt::gen_output_node_exp(165,2867
+void MatCodeGenFlt::gen_input_node_exp(185,3375
+void MatCodeGenFlt::gen_add_node_exp(220,4155
+void MatCodeGenFlt::gen_sub_node_exp(263,5148
+void MatCodeGenFlt::gen_mul_node_exp(298,6127
+void MatCodeGenFlt::gen_div_node_exp(335,7111
+void  MatCodeGenFlt::gen_var_decs(370,8091
+void MatCodeGenFlt::gen_header(385,8346
+void MatCodeGenFlt::gen_footer(432,9235
+
+optbw_flt.cpp,262
+OptBW_flt::OptBW_flt(7,96
+void OptBW_flt::operator() 29,536
+void OptBW_flt::create_vectors(117,2246
+int OptBW_flt::find_uf_mbw(145,2776
+double OptBW_flt::update_bws(172,3173
+bool OptBW_flt::get_output_err(267,5165
+double OptBW_flt::get_area_cost(316,6215
+
+interval_range.cpp,814
+IntervalRange::IntervalRange(6,59
+void IntervalRange::operator()(10,221
+void IntervalRange::do_interval_analysis(20,362
+void IntervalRange::do_interval_analysis_node(55,1046
+double IntervalRange::get_range_max(101,1853
+double IntervalRange::get_range_min(133,2371
+void IntervalRange::interval_const_node(187,3137
+double IntervalRange::get_const_value(201,3367
+void IntervalRange::interval_shiftl_node(218,3595
+void IntervalRange::interval_shiftr_node(251,4318
+void IntervalRange::interval_add_node(283,4943
+void IntervalRange::interval_sub_node(337,6076
+void IntervalRange::interval_div_node(387,7215
+void IntervalRange::interval_mul_node(440,8399
+void IntervalRange::interval_assign_node(492,9583
+void IntervalRange::interval_input_node(517,10112
+void IntervalRange::show_interval_vecs(534,10413
+
+hwvector.h,260
+#define _HWVECTOR_H5,104
+#define ERROR(ERROR14,208
+using namespace std;16,262
+class HWvector{HWvector20,311
+HWvector<TYPE>::HWvector(47,623
+HWvector<TYPE>::HWvector(78,1183
+HWvector<TYPE>::~HWvector(116,1976
+TYPE& HWvector<TYPE>::operator[](123,2081
+
+node_sched.cpp,290
+NodeSchedular::NodeSchedular(3,27
+int NodeSchedular::schedule_innodes(6,133
+void NodeSchedular::schedule_graph(39,969
+void NodeSchedular::sort_schedule(90,1884
+  typedef pair < int , dag_index > SC_PAIR;SC_PAIR97,1993
+  typedef multimap < int , dag_index > SC_MAP_T;SC_MAP_T99,2040
+
+optbw_cpp.cpp,264
+OptBW_cpp::OptBW_cpp(3,20
+void OptBW_cpp::run_adanalysis(5,103
+void OptBW_cpp::gen_func_body(30,428
+void OptBW_cpp::gen_func_top(90,1711
+void OptBW_cpp::gen_error_func(135,2546
+void OptBW_cpp::update_edges_uni(174,3350
+void OptBW_cpp::update_edges(193,3822
+
+pwr_pass_glitch.cpp,633
+#define PASS_ONE 2,26
+#define PASS_TWO 3,45
+PwrPassGlitch::PwrPassGlitch(5,65
+void PwrPassGlitch::operator()(9,201
+void PwrPassGlitch::do_pwr_pass(42,849
+void PwrPassGlitch::do_pwr_pass_node(75,1332
+void PwrPassGlitch::pwr_add_node_exp(116,1977
+void PwrPassGlitch::pwr_sub_node_exp(170,2926
+void PwrPassGlitch::pwr_mul_node_exp(220,3891
+void PwrPassGlitch::pwr_shiftl_node(266,4845
+void PwrPassGlitch::pwr_shiftr_node(291,5473
+void PwrPassGlitch::pwr_div_node_exp(316,6101
+void PwrPassGlitch::pwr_const_node_exp(321,6162
+void PwrPassGlitch::pwr_output_node_exp(326,6223
+void PwrPassGlitch::pwr_input_node_exp(332,6288
+
+pwr_glitch_models.cpp,391
+PwrPassGlitch::GLITCH_PROF* PwrPassGlitch::G_Prof_Add_ng(5,29
+PwrPassGlitch::GLITCH_PROF* PwrPassGlitch::G_Prof_Sub_ng(43,881
+PwrPassGlitch::GLITCH_PROF* PwrPassGlitch::G_Prof_Mul_ng(57,1118
+PwrPassGlitch::GLITCH_PROF* PwrPassGlitch::G_Prof_Add_g(92,1926
+PwrPassGlitch::GLITCH_PROF* PwrPassGlitch::G_Prof_Sub_g(107,2181
+PwrPassGlitch::GLITCH_PROF* PwrPassGlitch::G_Prof_Mul_g(121,2435
+
+mat_code_gen.cpp,754
+MatCodeGen::MatCodeGen(6,70
+void MatCodeGen::operator()(9,244
+void MatCodeGen::do_matcodegen(17,326
+void MatCodeGen::do_matcodegen_node(58,972
+int MatCodeGen::set_signal_order(98,1661
+bool MatCodeGen::is_output_edge(138,2234
+void MatCodeGen::gen_const_node_exp(148,2423
+void MatCodeGen::gen_output_node_exp(176,3184
+void MatCodeGen::gen_input_node_exp(196,3689
+void MatCodeGen::gen_shiftl_node(231,4478
+void MatCodeGen::gen_shiftr_node(280,6039
+void MatCodeGen::gen_add_node_exp(325,7250
+void MatCodeGen::gen_sub_node_exp(398,9377
+void MatCodeGen::gen_mul_node_exp(442,10639
+void MatCodeGen::gen_div_node_exp(487,11902
+void  MatCodeGen::gen_var_decs(534,13173
+void MatCodeGen::gen_header(549,13423
+void MatCodeGen::gen_footer(598,14426
+
+gen_vhdl.cpp,1156
+VHDLGen::VHDLGen(7,116
+void VHDLGen::operator()(10,223
+void VHDLGen::output_code(49,779
+void VHDLGen::do_vhdlgen(69,1117
+void VHDLGen::do_vhdlgen_node(102,1639
+bool VHDLGen::is_output_edge(142,2294
+bool VHDLGen::is_input_edge(151,2478
+void VHDLGen::process_signal(161,2662
+void VHDLGen::gen_bs_struct(231,3912
+void VHDLGen::add_internal_signal(300,5371
+void VHDLGen::gen_add_node(314,5604
+void VHDLGen::gen_binvalue(421,8461
+void VHDLGen::adjust_signal_bw(439,8878
+void VHDLGen::gen_sub_node(471,9515
+void VHDLGen::gen_mul_node(578,12377
+void VHDLGen::gen_shiftl_node(705,15697
+void VHDLGen::gen_shiftr_node(773,17704
+void VHDLGen::gen_const_node(845,19758
+void VHDLGen::gen_output_node(854,19829
+void VHDLGen::gen_input_node(900,20906
+void VHDLGen::gen_entity_sec(943,21972
+void VHDLGen::gen_arch_sec(985,23018
+void VHDLGen::gen_struct_sec(1007,23538
+void VHDLGen::gen_components(1019,23700
+void VHDLGen::update_edges_bw(1103,25766
+void VHDLGen::update_edges_bw(1162,26718
+void VHDLGen::gen_test_bench(1189,27263
+void VHDLGen::gen_tb_top(1214,27587
+void VHDLGen::gen_tb_arch(1238,28073
+void VHDLGen::gen_tb_struct(1328,30630
+
+varnames.h,274
+#define _VARNAMES_H2,21
+using namespace std;21,424
+class varnames{varnames23,448
+  enum varmodetype varnames::varmodetype27,479
+  enum varmodetype { ALPHA varnames::varmodetype::ALPHA27,479
+  enum varmodetype { ALPHA , NUMERIC varnames::varmodetype::NUMERIC27,479
+
+errmodel_affine_flt_cpp.cpp,1169
+ErrModel_Affine_FLT_CPP::ErrModel_Affine_FLT_CPP(5,62
+void ErrModel_Affine_FLT_CPP::do_affine_analysis(8,254
+void ErrModel_Affine_FLT_CPP::do_affine_analysis_node(46,936
+string ErrModel_Affine_FLT_CPP::get_abs_eterms(91,1709
+void ErrModel_Affine_FLT_CPP::affine_const_node_exp(150,2882
+void ErrModel_Affine_FLT_CPP::affine_assign_node(182,3496
+void ErrModel_Affine_FLT_CPP::affine_add_node(196,3802
+void ErrModel_Affine_FLT_CPP::affine_sub_node(314,5787
+void  ErrModel_Affine_FLT_CPP::affine_div_node(426,7765
+double ErrModel_Affine_FLT_CPP::get_abs_maxval(592,11834
+void ErrModel_Affine_FLT_CPP::affine_mul_node(600,11977
+void ErrModel_Affine_FLT_CPP::affine_shiftl_node(740,14433
+void ErrModel_Affine_FLT_CPP::affine_shiftr_node(824,16194
+void ErrModel_Affine_FLT_CPP::gen_signal_bwname(910,17871
+void ErrModel_Affine_FLT_CPP::gen_signal_errorname(924,18113
+void ErrModel_Affine_FLT_CPP::gen_signal_err_expr(942,18382
+void ErrModel_Affine_FLT_CPP::affine_input_node(954,18598
+void ErrModel_Affine_FLT_CPP::show_affine_vecs(982,19270
+double  ErrModel_Affine_FLT_CPP::get_emax(1017,20106
+void ErrModel_Affine_FLT_CPP::gen_matlab_err_func(1029,20395
+
+sim_range.cpp,176
+SimRange::SimRange(3,31
+void SimRange::operator()(5,133
+double SimRange::get_range_max(34,634
+double SimRange::get_range_min(42,724
+void SimRange::show_range_vecs(75,1141
+
+errormodel_affine_cpp.cpp,1018
+ErrorModel_Affine_CPP::ErrorModel_Affine_CPP(5,62
+void ErrorModel_Affine_CPP::do_affine_analysis(8,250
+void ErrorModel_Affine_CPP::do_affine_analysis_node(43,886
+string ErrorModel_Affine_CPP::get_abs_eterms(88,1657
+void ErrorModel_Affine_CPP::affine_const_node_exp(147,2828
+void ErrorModel_Affine_CPP::affine_assign_node(179,3440
+void ErrorModel_Affine_CPP::affine_add_node(193,3744
+void ErrorModel_Affine_CPP::affine_sub_node(311,5725
+void  ErrorModel_Affine_CPP::affine_div_node(423,7699
+void ErrorModel_Affine_CPP::affine_mul_node(593,11771
+void ErrorModel_Affine_CPP::affine_shiftl_node(721,13959
+void ErrorModel_Affine_CPP::affine_shiftr_node(805,15717
+void ErrorModel_Affine_CPP::gen_signal_bwname(891,17391
+void ErrorModel_Affine_CPP::gen_signal_errorname(905,17631
+void ErrorModel_Affine_CPP::gen_signal_err_expr(923,17898
+void ErrorModel_Affine_CPP::affine_input_node(935,18112
+void ErrorModel_Affine_CPP::show_affine_vecs(963,18782
+void ErrorModel_Affine_CPP::gen_matlab_err_func(999,19618
+
+hwlns.cpp,832
+void HWlns::init(18,349
+void HWlns::init(26,419
+HWlns::HWlns(145,3427
+HWlns::HWlns(156,3570
+HWlns::HWlns(179,3998
+HWlns::~HWlns(205,4626
+HWlns::HWlns 211,4655
+double HWlns::get_val(217,4733
+HWlns& HWlns::operator= 223,4809
+HWlns& HWlns::operator= 266,5434
+HWlns& HWlns::operator<<= 302,6114
+void HWlns::analyse_bw(313,6212
+void HWlns::output_results(335,6561
+void HWlns::print_advar(406,8717
+HWlns operator+ 419,8867
+HWlns operator+ 439,9256
+HWlns operator+ 461,9718
+HWlns operator- 485,10183
+HWlns operator- 508,10590
+HWlns operator- 529,11052
+HWlns operator* 549,11503
+HWlns operator* 568,11889
+HWlns operator* 589,12346
+HWlns operator/ 611,12804
+HWlns operator/ 630,13190
+HWlns operator/ 651,13647
+HWlns operator<< 673,14105
+void HWlns::read_inputdata(684,14234
+void HWlns::output_analysis(695,14317
+
+errmodel_affine_lns_cpp.cpp,1169
+ErrModel_Affine_LNS_CPP::ErrModel_Affine_LNS_CPP(5,62
+void ErrModel_Affine_LNS_CPP::do_affine_analysis(8,254
+void ErrModel_Affine_LNS_CPP::do_affine_analysis_node(46,946
+string ErrModel_Affine_LNS_CPP::get_abs_eterms(91,1719
+void ErrModel_Affine_LNS_CPP::affine_const_node_exp(150,2892
+void ErrModel_Affine_LNS_CPP::affine_assign_node(182,3506
+void ErrModel_Affine_LNS_CPP::affine_add_node(196,3812
+void ErrModel_Affine_LNS_CPP::affine_sub_node(314,5795
+void  ErrModel_Affine_LNS_CPP::affine_div_node(426,7771
+double ErrModel_Affine_LNS_CPP::get_abs_maxval(592,11838
+void ErrModel_Affine_LNS_CPP::affine_mul_node(600,11981
+void ErrModel_Affine_LNS_CPP::affine_shiftl_node(740,14435
+void ErrModel_Affine_LNS_CPP::affine_shiftr_node(824,16195
+void ErrModel_Affine_LNS_CPP::gen_signal_bwname(910,17871
+void ErrModel_Affine_LNS_CPP::gen_signal_errorname(924,18113
+void ErrModel_Affine_LNS_CPP::gen_signal_err_expr(942,18382
+void ErrModel_Affine_LNS_CPP::affine_input_node(954,18598
+void ErrModel_Affine_LNS_CPP::show_affine_vecs(982,19270
+double  ErrModel_Affine_LNS_CPP::get_emax(1017,20106
+void ErrModel_Affine_LNS_CPP::gen_matlab_err_func(1031,20497
+
+optbw_lns_cpp.cpp,329
+OptBWLNS_cpp::OptBWLNS_cpp(3,20
+void OptBWLNS_cpp::run_adanalysis(5,109
+void OptBWLNS_cpp::gen_func_body(36,526
+double OptBWLNS_cpp::get_emax(95,1702
+void OptBWLNS_cpp::gen_func_top(107,1967
+void OptBWLNS_cpp::gen_error_func(165,3072
+void  OptBWLNS_cpp::update_edges(209,3977
+void OptBWLNS_cpp::update_edges_uni(243,4534
+
+cost_func_area_lns_cpp.cpp,556
+CostFuncAreaLNSCPP::CostFuncAreaLNSCPP(4,31
+void CostFuncAreaLNSCPP::cost_function_end(6,120
+string CostFuncAreaLNSCPP::state_bw(31,1070
+double CostFuncAreaLNSCPP::range_bw(43,1257
+void CostFuncAreaLNSCPP::gen_parameters_func(98,2587
+void CostFuncAreaLNSCPP::gen_costf(141,3695
+void CostFuncAreaLNSCPP::gen_ml_node_cf(294,6642
+void CostFuncAreaLNSCPP::gen_ml_add_node_exp(325,7020
+void CostFuncAreaLNSCPP::gen_ml_sub_node_exp(359,8120
+void CostFuncAreaLNSCPP::gen_ml_mul_node_exp(382,8910
+void  CostFuncAreaLNSCPP::gen_ml_div_node_exp(451,11155
