@@ -1,0 +1,11 @@
+digraph G {
+NODE_0 [ label = "START_NODE NODE_0"];
+NODE_1 [ label = "END_NODE NODE_1"];
+NODE_2 [ label = "IN_NODE NODE_2"];
+NODE_3 [ label = "IN_NODE NODE_3"];
+NODE_4 [ label = "OUT_NODE NODE_4"];
+NODE_5->NODE_4 [ label = "y_4\nFBW # 0"];
+NODE_5 [ label = "ADD_NODE NODE_5"];
+NODE_2->NODE_5 [ label = "a_2\nFBW # 0"];
+NODE_3->NODE_5 [ label = "b_3\nFBW # 0"];
+}

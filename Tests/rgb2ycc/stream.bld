@@ -1,0 +1,491 @@
+Release 8.1.03i ngdbuild I.27
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+
+Command Line: ngdbuild -uc
+/homes/amag97/Projects/ASC-1.5/inc/ASCbackend/admxrc2card/admxrc2card.ucf -dd .
+stream.edn 
+
+Executing edif2ngd "stream.edn" "stream.ngo"
+Release 8.1.03i - edif2ngd I.27
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+INFO:NgdBuild - Release 8.1.03i edif2ngd I.27
+INFO:NgdBuild - Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+Writing module to "stream.ngo"...
+Reading NGO file '/vol/cc/amag97/Projects/bitsize/Tests/rgb2ycc/stream.ngo' ...
+Loading design module
+"/vol/cc/amag97/Projects/bitsize/Tests/rgb2ycc/mult_18_22_40_16_5_NoDSP48_Sig_6.
+ngc"...
+Loading design module
+"/vol/cc/amag97/Projects/bitsize/Tests/rgb2ycc/mult_18_21_39_16_5_NoDSP48_Sig_6.
+ngc"...
+Loading design module
+"/vol/cc/amag97/Projects/bitsize/Tests/rgb2ycc/mult_17_22_39_16_5_NoDSP48_Sig_6.
+ngc"...
+Loading design module
+"/vol/cc/amag97/Projects/bitsize/Tests/rgb2ycc/mult_20_22_42_16_5_NoDSP48_Sig_6.
+ngc"...
+Loading design module
+"/vol/cc/amag97/Projects/bitsize/Tests/rgb2ycc/mult_22_22_44_18_5_NoDSP48_Sig_6.
+ngc"...
+Loading design module
+"/vol/cc/amag97/Projects/bitsize/Tests/rgb2ycc/mult_23_20_43_16_5_NoDSP48_Sig_6.
+ngc"...
+Loading design module
+"/vol/cc/amag97/Projects/bitsize/Tests/rgb2ycc/mult_18_20_38_16_5_NoDSP48_Sig_6.
+ngc"...
+Loading design module
+"/vol/cc/amag97/Projects/bitsize/Tests/rgb2ycc/mult_22_21_43_17_5_NoDSP48_Sig_6.
+ngc"...
+Loading design module
+"/vol/cc/amag97/Projects/bitsize/Tests/rgb2ycc/mult_17_21_38_16_5_NoDSP48_Sig_6.
+ngc"...
+INFO:NgdBuild:889 - Pad net '__obuf_ramclko<0>' is not connected to an external
+   port in this design.  A new port '__obuf_ramclko<0>' has been added and is
+   connected to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_ramclko<1>' is not connected to an external
+   port in this design.  A new port '__obuf_ramclko<1>' has been added and is
+   connected to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc0<0>' is not connected to an external port
+   in this design.  A new port '__obuf_rc0<0>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc0<1>' is not connected to an external port
+   in this design.  A new port '__obuf_rc0<1>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc0<2>' is not connected to an external port
+   in this design.  A new port '__obuf_rc0<2>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc0<3>' is not connected to an external port
+   in this design.  A new port '__obuf_rc0<3>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc0<4>' is not connected to an external port
+   in this design.  A new port '__obuf_rc0<4>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc0<5>' is not connected to an external port
+   in this design.  A new port '__obuf_rc0<5>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc0<6>' is not connected to an external port
+   in this design.  A new port '__obuf_rc0<6>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc0<7>' is not connected to an external port
+   in this design.  A new port '__obuf_rc0<7>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc0<8>' is not connected to an external port
+   in this design.  A new port '__obuf_rc0<8>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc1<0>' is not connected to an external port
+   in this design.  A new port '__obuf_rc1<0>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc1<1>' is not connected to an external port
+   in this design.  A new port '__obuf_rc1<1>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc1<2>' is not connected to an external port
+   in this design.  A new port '__obuf_rc1<2>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc1<3>' is not connected to an external port
+   in this design.  A new port '__obuf_rc1<3>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc1<4>' is not connected to an external port
+   in this design.  A new port '__obuf_rc1<4>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc1<5>' is not connected to an external port
+   in this design.  A new port '__obuf_rc1<5>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc1<6>' is not connected to an external port
+   in this design.  A new port '__obuf_rc1<6>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc1<7>' is not connected to an external port
+   in this design.  A new port '__obuf_rc1<7>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc1<8>' is not connected to an external port
+   in this design.  A new port '__obuf_rc1<8>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc2<0>' is not connected to an external port
+   in this design.  A new port '__obuf_rc2<0>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc2<1>' is not connected to an external port
+   in this design.  A new port '__obuf_rc2<1>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc2<2>' is not connected to an external port
+   in this design.  A new port '__obuf_rc2<2>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc2<3>' is not connected to an external port
+   in this design.  A new port '__obuf_rc2<3>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc2<4>' is not connected to an external port
+   in this design.  A new port '__obuf_rc2<4>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc2<5>' is not connected to an external port
+   in this design.  A new port '__obuf_rc2<5>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc2<6>' is not connected to an external port
+   in this design.  A new port '__obuf_rc2<6>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc2<7>' is not connected to an external port
+   in this design.  A new port '__obuf_rc2<7>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc2<8>' is not connected to an external port
+   in this design.  A new port '__obuf_rc2<8>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc3<0>' is not connected to an external port
+   in this design.  A new port '__obuf_rc3<0>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc3<1>' is not connected to an external port
+   in this design.  A new port '__obuf_rc3<1>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc3<2>' is not connected to an external port
+   in this design.  A new port '__obuf_rc3<2>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc3<3>' is not connected to an external port
+   in this design.  A new port '__obuf_rc3<3>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc3<4>' is not connected to an external port
+   in this design.  A new port '__obuf_rc3<4>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc3<5>' is not connected to an external port
+   in this design.  A new port '__obuf_rc3<5>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc3<6>' is not connected to an external port
+   in this design.  A new port '__obuf_rc3<6>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc3<7>' is not connected to an external port
+   in this design.  A new port '__obuf_rc3<7>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc3<8>' is not connected to an external port
+   in this design.  A new port '__obuf_rc3<8>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc4<0>' is not connected to an external port
+   in this design.  A new port '__obuf_rc4<0>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc4<1>' is not connected to an external port
+   in this design.  A new port '__obuf_rc4<1>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc4<2>' is not connected to an external port
+   in this design.  A new port '__obuf_rc4<2>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc4<3>' is not connected to an external port
+   in this design.  A new port '__obuf_rc4<3>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc4<4>' is not connected to an external port
+   in this design.  A new port '__obuf_rc4<4>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc4<5>' is not connected to an external port
+   in this design.  A new port '__obuf_rc4<5>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc4<6>' is not connected to an external port
+   in this design.  A new port '__obuf_rc4<6>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc4<7>' is not connected to an external port
+   in this design.  A new port '__obuf_rc4<7>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc4<8>' is not connected to an external port
+   in this design.  A new port '__obuf_rc4<8>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc5<0>' is not connected to an external port
+   in this design.  A new port '__obuf_rc5<0>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc5<1>' is not connected to an external port
+   in this design.  A new port '__obuf_rc5<1>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc5<2>' is not connected to an external port
+   in this design.  A new port '__obuf_rc5<2>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc5<3>' is not connected to an external port
+   in this design.  A new port '__obuf_rc5<3>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc5<4>' is not connected to an external port
+   in this design.  A new port '__obuf_rc5<4>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc5<5>' is not connected to an external port
+   in this design.  A new port '__obuf_rc5<5>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc5<6>' is not connected to an external port
+   in this design.  A new port '__obuf_rc5<6>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc5<7>' is not connected to an external port
+   in this design.  A new port '__obuf_rc5<7>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net '__obuf_rc5<8>' is not connected to an external port
+   in this design.  A new port '__obuf_rc5<8>' has been added and is connected
+   to this signal.
+INFO:NgdBuild:889 - Pad net 'fholda' is not connected to an external port in
+   this design.  A new port 'fholda' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<00>' is not connected to an external port in
+   this design.  A new port 'la<00>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<01>' is not connected to an external port in
+   this design.  A new port 'la<01>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<02>' is not connected to an external port in
+   this design.  A new port 'la<02>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<03>' is not connected to an external port in
+   this design.  A new port 'la<03>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<04>' is not connected to an external port in
+   this design.  A new port 'la<04>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<05>' is not connected to an external port in
+   this design.  A new port 'la<05>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<06>' is not connected to an external port in
+   this design.  A new port 'la<06>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<07>' is not connected to an external port in
+   this design.  A new port 'la<07>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<09>' is not connected to an external port in
+   this design.  A new port 'la<09>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<10>' is not connected to an external port in
+   this design.  A new port 'la<10>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<11>' is not connected to an external port in
+   this design.  A new port 'la<11>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<12>' is not connected to an external port in
+   this design.  A new port 'la<12>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'la<21>' is not connected to an external port in
+   this design.  A new port 'la<21>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'lads_l' is not connected to an external port in
+   this design.  A new port 'lads_l' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'lbe_l<0>' is not connected to an external port in
+   this design.  A new port 'lbe_l<0>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'lbe_l<1>' is not connected to an external port in
+   this design.  A new port 'lbe_l<1>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'lbe_l<2>' is not connected to an external port in
+   this design.  A new port 'lbe_l<2>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'lbe_l<3>' is not connected to an external port in
+   this design.  A new port 'lbe_l<3>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'lblast_l' is not connected to an external port in
+   this design.  A new port 'lblast_l' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'lbterm_l' is not connected to an external port in
+   this design.  A new port 'lbterm_l' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'lclk' is not connected to an external port in this
+   design.  A new port 'lclk' has been added and is connected to this signal.
+INFO:NgdBuild:889 - Pad net 'ld<00>' is not connected to an external port in
+   this design.  A new port 'ld<00>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<01>' is not connected to an external port in
+   this design.  A new port 'ld<01>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<02>' is not connected to an external port in
+   this design.  A new port 'ld<02>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<03>' is not connected to an external port in
+   this design.  A new port 'ld<03>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<04>' is not connected to an external port in
+   this design.  A new port 'ld<04>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<05>' is not connected to an external port in
+   this design.  A new port 'ld<05>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<06>' is not connected to an external port in
+   this design.  A new port 'ld<06>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<07>' is not connected to an external port in
+   this design.  A new port 'ld<07>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<08>' is not connected to an external port in
+   this design.  A new port 'ld<08>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<09>' is not connected to an external port in
+   this design.  A new port 'ld<09>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<10>' is not connected to an external port in
+   this design.  A new port 'ld<10>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<11>' is not connected to an external port in
+   this design.  A new port 'ld<11>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<12>' is not connected to an external port in
+   this design.  A new port 'ld<12>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<13>' is not connected to an external port in
+   this design.  A new port 'ld<13>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<14>' is not connected to an external port in
+   this design.  A new port 'ld<14>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<15>' is not connected to an external port in
+   this design.  A new port 'ld<15>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<16>' is not connected to an external port in
+   this design.  A new port 'ld<16>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<17>' is not connected to an external port in
+   this design.  A new port 'ld<17>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<18>' is not connected to an external port in
+   this design.  A new port 'ld<18>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<19>' is not connected to an external port in
+   this design.  A new port 'ld<19>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<20>' is not connected to an external port in
+   this design.  A new port 'ld<20>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<21>' is not connected to an external port in
+   this design.  A new port 'ld<21>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<22>' is not connected to an external port in
+   this design.  A new port 'ld<22>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<23>' is not connected to an external port in
+   this design.  A new port 'ld<23>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<24>' is not connected to an external port in
+   this design.  A new port 'ld<24>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<25>' is not connected to an external port in
+   this design.  A new port 'ld<25>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<26>' is not connected to an external port in
+   this design.  A new port 'ld<26>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<27>' is not connected to an external port in
+   this design.  A new port 'ld<27>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<28>' is not connected to an external port in
+   this design.  A new port 'ld<28>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<29>' is not connected to an external port in
+   this design.  A new port 'ld<29>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<30>' is not connected to an external port in
+   this design.  A new port 'ld<30>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ld<31>' is not connected to an external port in
+   this design.  A new port 'ld<31>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'lreadyi_l' is not connected to an external port in
+   this design.  A new port 'lreadyi_l' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'lwrite' is not connected to an external port in
+   this design.  A new port 'lwrite' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'mclk' is not connected to an external port in this
+   design.  A new port 'mclk' has been added and is connected to this signal.
+INFO:NgdBuild:889 - Pad net 'ramclki<0>' is not connected to an external port in
+   this design.  A new port 'ramclki<0>' has been added and is connected to this
+   signal.
+INFO:NgdBuild:889 - Pad net 'ramclki<1>' is not connected to an external port in
+   this design.  A new port 'ramclki<1>' has been added and is connected to this
+   signal.
+
+Applying constraints in
+"/homes/amag97/Projects/ASC-1.5/inc/ASCbackend/admxrc2card/admxrc2card.ucf" to
+the design...
+INFO:NgdBuild:928 - A pullup 'data_out<00>.PULLUP' was added to net
+   'data_out<00>'
+INFO:NgdBuild:928 - A pullup 'data_out<01>.PULLUP' was added to net
+   'data_out<01>'
+INFO:NgdBuild:928 - A pullup 'data_out<02>.PULLUP' was added to net
+   'data_out<02>'
+INFO:NgdBuild:928 - A pullup 'data_out<03>.PULLUP' was added to net
+   'data_out<03>'
+INFO:NgdBuild:928 - A pullup 'data_out<04>.PULLUP' was added to net
+   'data_out<04>'
+INFO:NgdBuild:928 - A pullup 'data_out<05>.PULLUP' was added to net
+   'data_out<05>'
+INFO:NgdBuild:928 - A pullup 'data_out<06>.PULLUP' was added to net
+   'data_out<06>'
+INFO:NgdBuild:928 - A pullup 'data_out<07>.PULLUP' was added to net
+   'data_out<07>'
+INFO:NgdBuild:928 - A pullup 'data_out<08>.PULLUP' was added to net
+   'data_out<08>'
+INFO:NgdBuild:928 - A pullup 'data_out<09>.PULLUP' was added to net
+   'data_out<09>'
+INFO:NgdBuild:928 - A pullup 'data_out<10>.PULLUP' was added to net
+   'data_out<10>'
+INFO:NgdBuild:928 - A pullup 'data_out<11>.PULLUP' was added to net
+   'data_out<11>'
+INFO:NgdBuild:928 - A pullup 'data_out<12>.PULLUP' was added to net
+   'data_out<12>'
+INFO:NgdBuild:928 - A pullup 'data_out<13>.PULLUP' was added to net
+   'data_out<13>'
+INFO:NgdBuild:928 - A pullup 'data_out<14>.PULLUP' was added to net
+   'data_out<14>'
+INFO:NgdBuild:928 - A pullup 'data_out<15>.PULLUP' was added to net
+   'data_out<15>'
+INFO:NgdBuild:928 - A pullup 'data_out<16>.PULLUP' was added to net
+   'data_out<16>'
+INFO:NgdBuild:928 - A pullup 'data_out<17>.PULLUP' was added to net
+   'data_out<17>'
+INFO:NgdBuild:928 - A pullup 'data_out<18>.PULLUP' was added to net
+   'data_out<18>'
+INFO:NgdBuild:928 - A pullup 'data_out<19>.PULLUP' was added to net
+   'data_out<19>'
+INFO:NgdBuild:928 - A pullup 'ld_o<00>.PULLUP' was added to net 'ld_o<00>'
+INFO:NgdBuild:928 - A pullup 'ld_o<01>.PULLUP' was added to net 'ld_o<01>'
+INFO:NgdBuild:928 - A pullup 'ld_o<02>.PULLUP' was added to net 'ld_o<02>'
+INFO:NgdBuild:928 - A pullup 'ld_o<03>.PULLUP' was added to net 'ld_o<03>'
+INFO:NgdBuild:928 - A pullup 'ld_o<04>.PULLUP' was added to net 'ld_o<04>'
+INFO:NgdBuild:928 - A pullup 'ld_o<05>.PULLUP' was added to net 'ld_o<05>'
+INFO:NgdBuild:928 - A pullup 'ld_o<06>.PULLUP' was added to net 'ld_o<06>'
+INFO:NgdBuild:928 - A pullup 'ld_o<07>.PULLUP' was added to net 'ld_o<07>'
+INFO:NgdBuild:928 - A pullup 'ld_o<08>.PULLUP' was added to net 'ld_o<08>'
+INFO:NgdBuild:928 - A pullup 'ld_o<09>.PULLUP' was added to net 'ld_o<09>'
+INFO:NgdBuild:928 - A pullup 'ld_o<10>.PULLUP' was added to net 'ld_o<10>'
+INFO:NgdBuild:928 - A pullup 'ld_o<11>.PULLUP' was added to net 'ld_o<11>'
+INFO:NgdBuild:928 - A pullup 'ld_o<12>.PULLUP' was added to net 'ld_o<12>'
+INFO:NgdBuild:928 - A pullup 'ld_o<13>.PULLUP' was added to net 'ld_o<13>'
+INFO:NgdBuild:928 - A pullup 'ld_o<14>.PULLUP' was added to net 'ld_o<14>'
+INFO:NgdBuild:928 - A pullup 'ld_o<15>.PULLUP' was added to net 'ld_o<15>'
+INFO:NgdBuild:928 - A pullup 'ld_o<16>.PULLUP' was added to net 'ld_o<16>'
+INFO:NgdBuild:928 - A pullup 'ld_o<17>.PULLUP' was added to net 'ld_o<17>'
+INFO:NgdBuild:928 - A pullup 'ld_o<18>.PULLUP' was added to net 'ld_o<18>'
+INFO:NgdBuild:928 - A pullup 'ld_o<19>.PULLUP' was added to net 'ld_o<19>'
+INFO:NgdBuild:928 - A pullup 'ld_o<20>.PULLUP' was added to net 'ld_o<20>'
+INFO:NgdBuild:928 - A pullup 'ld_o<21>.PULLUP' was added to net 'ld_o<21>'
+INFO:NgdBuild:928 - A pullup 'ld_o<22>.PULLUP' was added to net 'ld_o<22>'
+INFO:NgdBuild:928 - A pullup 'ld_o<23>.PULLUP' was added to net 'ld_o<23>'
+INFO:NgdBuild:928 - A pullup 'ld_o<24>.PULLUP' was added to net 'ld_o<24>'
+INFO:NgdBuild:928 - A pullup 'ld_o<25>.PULLUP' was added to net 'ld_o<25>'
+INFO:NgdBuild:928 - A pullup 'ld_o<26>.PULLUP' was added to net 'ld_o<26>'
+INFO:NgdBuild:928 - A pullup 'ld_o<27>.PULLUP' was added to net 'ld_o<27>'
+INFO:NgdBuild:928 - A pullup 'ld_o<28>.PULLUP' was added to net 'ld_o<28>'
+INFO:NgdBuild:928 - A pullup 'ld_o<29>.PULLUP' was added to net 'ld_o<29>'
+INFO:NgdBuild:928 - A pullup 'ld_o<30>.PULLUP' was added to net 'ld_o<30>'
+INFO:NgdBuild:928 - A pullup 'ld_o<31>.PULLUP' was added to net 'ld_o<31>'
+
+Checking timing specifications ...
+WARNING:XdmHelpers:793 - The TNM "LCLK_FFS" drives the CLKIN pin of DCM
+   "clkSys". This TNM cannot be traced through the DCM because it is not used
+   exclusively by one PERIOD specification. This TNM is used in the following
+   user groups and/or specifications:
+   <none>
+WARNING:XdmHelpers:622 - For TNM group "LCLK_FFS", no instances of type FFS are
+   driven from signal "lclk".
+WARNING:XdmHelpers:793 - The TNM "MCLK_FFS" drives the CLKIN pin of DCM
+   "stream/clk". This TNM cannot be traced through the DCM because it is not
+   used exclusively by one PERIOD specification. This TNM is used in the
+   following user groups and/or specifications:
+   <none>
+WARNING:XdmHelpers:622 - For TNM group "MCLK_FFS", no instances of type FFS are
+   driven from signal "mclk".
+WARNING:XdmHelpers:644 - No appropriate elements were found for the TNM group
+   "LCLK_FFS". This group has been removed from the design.
+WARNING:XdmHelpers:644 - No appropriate elements were found for the TNM group
+   "MCLK_FFS". This group has been removed from the design.
+Checking expanded design ...
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   6
+
+Total memory usage is 318980 kilobytes
+
+Writing NGD file "stream.ngd" ...
+
+Writing NGDBUILD log file "stream.bld"...

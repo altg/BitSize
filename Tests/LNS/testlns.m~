@@ -1,0 +1,15 @@
+%test round
+
+v = 5.657966225442204e-002;
+
+l1 = log2( v );
+
+fbw = 10;
+
+rl1 = ceil( l1 * 2^fbw ) * 2^-fbw;
+
+rv1 = 2^( rl1 )
+
+e1 = v - rv1
+
+ulp = 

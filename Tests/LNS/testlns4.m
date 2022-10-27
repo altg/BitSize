@@ -1,0 +1,23 @@
+%test4
+
+% f = a + b
+clear all;
+
+fbw = 10;
+
+a = rand_gen( 2 , 3  , 10);
+
+b = rand_gen( 2 , 3 , 10);
+
+a_r = lns_round( a , fbw );
+b_r = lns_round( b , fbw );
+
+e_a = a - a_r;
+
+e_b = b - b_r;
+
+er_a = 2^( 2^2 - 2^(-fbw - 1) ) -  2^( 2^2 - 2^(-fbw) );
+
+er_b = round_err( 2 , fbw );
+
+[ e_a er_a*ones(10,1) e_b er_b*ones(10,1) ]

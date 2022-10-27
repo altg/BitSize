@@ -1,0 +1,103 @@
+BITSIZE_HOME=$(HOME)/Projects/bitsize
+SIGNALGEN=$(HOME)/Projects/SignalGen
+CFLAGS=-g
+#OPT_MODE= -r affine -p affine --testgen -v 1
+
+OPT_MODE= -r affine -p affine_cpp -m area_cpp
+
+FPGA_ARCH=VIRTEX2
+FPGA_PART=XC2V2000
+FPGA_PACKAGE=BG575
+FPGA_SPEED_GRADE=-6
+
+ASA_HOME=$(HOME)/Projects/ASA/MyASA
+
+include $(BITSIZE_HOME)/makefiles/makefile.bitsize
+
+BSEXEC=stream.exe
+
+NUM_INPUTS=2
+
+SIGGENPARAMS=1.0 1.0 0.0 0.0 0.0 0.0 0.0 $(NUM_INPUTS) 10000 asctest.dat 
+
+SIGGENVHDLPARAMS=asctest.dat 4 1000 
+
+CTEST_NAME:=$(shell  pwd | sed -e 's/^.*\///' )
+
+TEST_BWS := 16
+
+TESTS = $(foreach TEST_BW,$(TEST_BWS), pwrglitch_uni_$(TEST_BW)  pwrglitch_nonuni_$(TEST_BW) )
+
+TESTS += $(foreach TEST_BW,$(TEST_BWS), area_nonuni_$(TEST_BW) )
+
+CP=cp -rv
+
+HOSTNAME=$(shell hostname)
+
+ifeq ($(HOSTNAME),salik)
+SOURCE=.
+R_TARGET=/mnt/p/bitsize/Tests/$(CTEST_NAME)
+else
+SOURCE=.
+R_TARGET=$(HOME)/scratch/Tests/$(CTEST_NAME)
+endif
+
+RHOST=nin
+
+
+gen_power_opt:
+	$(BSEXEC) -r affine -p affine -m power_g
+
+gen_power_opt2:
+	$(BSEXEC) -r affine -p affine2 -m power_g
+
+gen_area_opt:
+	$(BSEXEC) -r affine -p affine -m area
+
+asctest.dat:
+	$(SIGNALGEN)/gen_sigs.exe $(SIGGENPARAMS) 
+inputs:
+	$(SIGNALGEN)/gen_sigs_vhdl.exe $(BWFILE) asctest.dat 1000
+
+
+run_tests:
+	@for mytest in $(TESTS); do \
+	( echo "Getting Data using bs_${CTEST_NAME}_$${mytest}.dat";\
+	make bitsize_data BWFILE=bs_${CTEST_NAME}_$${mytest}.dat)\
+	done
+
+setup_data_r:
+	mkdir -p $(R_TARGET)
+	$(CP) $(SOURCE)/bs_*dat $(R_TARGET) 
+
+setup_data:
+	$(CP) $(SOURCE)/bs_*dat $(R_TARGET) 
+	ssh amag97@$(RHOST) "cd Projects/bitsize/Tests/$(CTEST_NAME) && make setup_data_r"
+
+setup_data_sys:
+	mkdir -p $(R_TARGET)
+	$(CP) makefile asctest.dat stream_opt.cxx $(R_TARGET)
+	ssh amag97@$(RHOST) "cd Projects/bitsize/Tests/$(CTEST_NAME) && make setup_data_sys_r"
+
+setup_data_sys_r:
+	mkdir -p $(R_TARGET)
+	$(CP) makefile asctest.dat stream_opt.cxx $(R_TARGET)
+
+
+get_data_r:
+	$(CP) $(R_TARGET)/bitsize_test_data.m $(SOURCE)
+
+get_data:
+	ssh amag97@$(RHOST) "cd Projects/bitsize/Tests/$(CTEST_NAME) && make get_data_r"
+	$(CP) $(R_TARGET)/bitsize_test_data.m $(SOURCE)
+
+
+#vcdfile:
+#	perl $(BITSIZE_HOME)/plfiles/gen_modelsim.pl bitsize_test 1000ns
+#	vsim -c -quiet -do modsim_compile.do
+#	vsim -c -quiet -do modsim.do
+
+#powerdata:
+#	xpwr -v -a bitsize_test.ncd  bitsize_test.pcf  -s bitsize_test.vcd -l 200000000 -t pwrsettings.tcl > power.dat
+#	@cat power.dat | sed -ne '/^Power summary:/,/^Thermal/p'
+

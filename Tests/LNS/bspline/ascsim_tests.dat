@@ -1,0 +1,86 @@
+1 B0_out OPT EXP 4
+
+2 B0_temp0 OPT EXP 4
+3 B0_temp0 OPT MAN 16
+
+4 B0_temp1 OPT EXP 4
+5 B0_temp1 OPT MAN 15
+
+6 B0_temp2 OPT EXP 4
+7 B0_temp2 OPT MAN 15
+
+8 B0_temp3 OPT EXP 4
+9 B0_temp3 OPT MAN 15
+
+10 B0_temp4 OPT EXP 4
+11 B0_temp4 OPT MAN 15
+
+12 B1_out OPT EXP 4
+
+13 B1_temp0 OPT EXP 5
+14 B1_temp0 OPT MAN 20
+
+15 B1_temp1 OPT EXP 5
+16 B1_temp1 OPT MAN 15
+
+17 B2_out OPT EXP 4
+
+18 B2_temp0 OPT EXP 5
+19 B2_temp0 OPT MAN 15
+
+20 B2_temp1 OPT EXP 5
+21 B2_temp1 OPT MAN 15
+
+22 B2_temp2 OPT EXP 5
+23 B2_temp2 OPT MAN 15
+
+24 B3_out OPT EXP 4
+
+25 B3_temp0 OPT EXP 4
+26 B3_temp0 OPT MAN 20
+
+27 my_1o6 OPT EXP 4
+28 my_1o6 OPT MAN 16
+
+
+
+
+
+
+29 u OPT MAN 15
+
+30 u_in OPT MAN 15
+
+31 u_p2 OPT EXP 4
+32 u_p2 OPT MAN 19
+
+33 u_p2_t2 OPT EXP 4
+34 u_p2_t2 OPT MAN 15
+
+35 u_p2_t3 OPT EXP 4
+36 u_p2_t3 OPT MAN 16
+
+37 u_p2_t6 OPT EXP 4
+38 u_p2_t6 OPT MAN 15
+
+39 u_p2_t6_temp0 OPT EXP 4
+40 u_p2_t6_temp0 OPT MAN 15
+
+41 u_p2_t6_temp1 OPT EXP 4
+42 u_p2_t6_temp1 OPT MAN 16
+
+43 u_p3 OPT EXP 4
+44 u_p3 OPT MAN 21
+
+45 u_p3_t3 OPT EXP 5
+46 u_p3_t3 OPT MAN 15
+
+47 u_p3_t3_temp0 OPT EXP 4
+48 u_p3_t3_temp0 OPT MAN 18
+
+49 u_t2 OPT EXP 3
+50 u_t2 OPT MAN 15
+
+51 u_t3 OPT EXP 4
+52 u_t3 OPT MAN 15
+

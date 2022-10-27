@@ -1,0 +1,7 @@
+
+
+ifeq ($(MMODE),asc)
+include makefile.asc
+else
+include makefile.bs
+endif 

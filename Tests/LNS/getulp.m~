@@ -1,0 +1,7 @@
+function ulp = getulp( v , fbw )
+
+l1 = log2( v );
+
+I = ceil( l1 );
+
+ulp = 2.^( I + 2^-fbw ) ;

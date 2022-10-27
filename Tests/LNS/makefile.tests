@@ -1,0 +1,44 @@
+MMODE=bs
+
+OPT_MODE= -r affine -p affine_cpp -m area_cpp
+
+#OPT_MODE= -r affine -p ad_cpp 
+
+R_FLAGS= 16
+
+
+
+TESTBWS=14 16 18 20
+
+O_TYPES=af ad
+
+OPT_MODES=uni nonuni
+
+
+run_tests:
+	make clean_bitsize
+	@for otype in $(O_TYPES); do\
+	( make bitsize OMODE=$${otype};\
+	cp bitsize_uni.dat bitsize.dat && make bitsize_annotate;\
+	cp stream.cxx stream_$${otype}_uni.cxh;\
+	cp bitsize_nonuni.dat bitsize.dat && make bitsize_annotate;\
+	cp stream.cxx stream_$${otype}_nonuni.cxh)\
+	done
+	cp ../stream_tpl.cxx stream.cxx
+
+
+run_tests2:
+	make clean_bitsize
+	@for fracbw in $(TESTBWS); do \
+	( echo "Analyzing for output frac bw $${fracbw}";\
+	make bitsize R_FLAGS=$${fracbw};\
+	cp bitsize_uni.dat bitsize.dat;\
+	make bitsize_annotate;\
+	cp stream.cxx stream_$${fracbw}_uni.cxh;\
+	cp bitsize_nonuni.dat bitsize.dat;\
+	make bitsize_annotate;\
+	cp stream.cxx stream_$${fracbw}_nonuni.cxh)\
+	done
+
+
+

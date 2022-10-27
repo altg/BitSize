@@ -1,0 +1,89 @@
+CFLAGS=-g
+OPT_MODE= -r affine -p affine --testgen -v 1
+
+FPGA_ARCH=VIRTEX2
+FPGA_PART=XC2V1000
+FPGA_PACKAGE=BG575
+FPGA_SPEED_GRADE=-6
+
+
+CTEST_NAME:=$(shell  pwd | sed -e 's/^.*\///' )
+
+TEST_BWS := 16
+TESTS := $(foreach TEST_BW,$(TEST_BWS), pwrglitch_uni_$(TEST_BW)  pwrglitch_nonuni_$(TEST_BW) )
+TESTS += $(foreach TEST_BW,$(TEST_BWS), area_nonuni_$(TEST_BW) )
+
+CP=cp -rv
+SCP=scp -r
+
+HOSTNAME=$(shell hostname)
+
+START_TIME:=$(shell date)
+
+ifeq ($(HOSTNAME),salik)
+SOURCE:=.
+#R_TARGET=/mnt/p/bitsize/Tests/circ/$(CTEST_NAME)
+R_TARGET_DIR:=scratch/Tests/circ/$(CTEST_NAME)
+R_TARGET:=amag97@$(RHOST):$(R_TARGET_DIR)
+else
+SOURCE:=.
+R_TARGET:=$(HOME)/scratch/Tests/circ/$(CTEST_NAME)
+endif
+
+MTESTS := 1 2 3 4 5 
+BWFILES := $(foreach MTEST,$(MTESTS), pwrglitch_test_$(MTEST) )
+
+gen_power_opt:
+	$(BSEXEC) -r affine -p affine -m power_g
+
+gen_area_opt:
+	$(BSEXEC) -r affine -p affine -m area
+
+asctest.dat:
+	$(SIGNALGEN)/gen_sigs.exe $(SIGGENPARAMS) 
+inputs:
+	$(SIGNALGEN)/gen_sigs_vhdl.exe $(BWFILE) asctest.dat 1000
+
+run_mtests:
+	@for mytest in $(BWFILES); do \
+	( echo "*** Doing Test bs_${CTEST_NAME}_$${mytest}.dat ***";\
+	make -s bitsize_data BWFILE=bs_${CTEST_NAME}_$${mytest}.dat )\
+	done
+	@echo "Start Time : $(START_TIME)"
+	@echo "End Time : "
+	@date
+
+run_mtests2:
+	@for mytest in $(BWFILES); do \
+	( echo "*** Doing Test bs_${CTEST_NAME}_$${mytest}.dat ***";\
+	rm -f asctest.dat && make asctest.dat;\
+	cp bs_${CTEST_NAME}_pwrglitch_test_0.dat bs_${CTEST_NAME}_$${mytest}.dat;\
+	rm -f bitsize_test.vcd bitsize_test.pwr && make bitsize_test.pwr bitsize_data_test BWFILE=bs_${CTEST_NAME}_$${mytest}.dat)\
+	done
+	echo "Start Time : $(START_TIME)"
+	echo "End Time : "
+	date
+
+run_tests:
+	@for mytest in $(TESTS); do \
+	( echo "Getting Data using bs_${CTEST_NAME}_$${mytest}.dat";\
+	make bitsize_data BWFILE=bs_${CTEST_NAME}_$${mytest}.dat)\
+	done
+
+setup_data:
+	ssh amag97@$(RHOST) "mkdir -p $(R_TARGET)"
+	$(SCP) $(SOURCE)/bs_*dat $(R_TARGET) 
+
+setup_sys:
+	ssh amag97@$(RHOST) "mkdir -p $(R_TARGET_DIR)"
+	$(SCP) makefile asctest.dat stream_opt.cxx $(R_TARGET)
+	ssh amag97@$(RHOST) "cd $(R_TARGET_DIR) && make clean_bitsize bitsize_compile"
+
+get_data:
+	$(SCP) $(R_TARGET)/bitsize_test_data.m  $(R_TARGET)/bs_struct.m $(SOURCE)
+
+send_file:
+	$(SCP) $(FILE) $(R_TARGET)
+
+get_file:
+	$(SCP) $(R_TARGET)/$(FILE) $(SOURCE)

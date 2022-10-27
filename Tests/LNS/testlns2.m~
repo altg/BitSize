@@ -1,0 +1,27 @@
+%test1
+
+% f = a + b
+clear all;
+
+fbw = 20;
+
+a = rand( 100000,1 );
+
+b = rand( 100000,1 );
+
+a_r = lns_round( a , fbw );
+b_r = lns_round( a , fbw );
+
+e_a = a - a_r;
+
+e_b = b - b_r;
+
+c_r = a_r + b_r;
+
+c = a + b;
+
+e = c - c_r;
+
+ef = e_a+e_b;
+
+E = [ e-ef ];

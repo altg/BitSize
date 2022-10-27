@@ -1,0 +1,941 @@
+		ADAPTIVE SIMULATED ANNEALING
+
+/* $Id: asa.c,v 26.22 2006/11/23 17:26:17 ingber Exp ingber $ */
+
+OPTIONS_FILE = 1
+OPTIONS_FILE_DATA = 1
+RECUR_OPTIONS_FILE = 0
+RECUR_OPTIONS_FILE_DATA = 0
+COST_FILE = 1
+ASA_LIB = 0
+HAVE_ANSI = 1
+IO_PROTOTYPES = 0
+TIME_CALC = 0
+TIME_STD = 0
+TIME_GETRUSAGE = 1
+INT_LONG = 1
+INT_ALLOC = 0
+SMALL_FLOAT =        1e-18
+MIN_DOUBLE =        1e-18
+MAX_DOUBLE =        1e+18
+EPS_DOUBLE =        1e-18
+CHECK_EXPONENT = 0
+NO_PARAM_TEMP_TEST = 0
+NO_COST_TEMP_TEST = 0
+SELF_OPTIMIZE = 0
+ASA_TEST = 0
+ASA_TEST_POINT = 0
+ASA_TEMPLATE = 0
+MY_TEMPLATE = 1
+ASA_TEMPLATE_LIB = 0
+ASA_TEMPLATE_ASA_OUT_PID = 0
+ASA_TEMPLATE_MULTIPLE = 0
+ASA_TEMPLATE_SELFOPT = 0
+ASA_TEMPLATE_SAMPLE = 0
+ASA_TEMPLATE_QUEUE = 0
+ASA_TEMPLATE_PARALLEL = 0
+ASA_TEMPLATE_SAVE = 0
+USER_INITIAL_COST_TEMP = 0
+RATIO_TEMPERATURE_SCALES = 0
+USER_INITIAL_PARAMETERS_TEMPS = 0
+DELTA_PARAMETERS = 0
+QUENCH_PARAMETERS = 0
+QUENCH_COST = 0
+QUENCH_PARAMETERS_SCALE = 1
+QUENCH_COST_SCALE = 1
+OPTIONAL_DATA_DBL = 0
+OPTIONAL_DATA_INT = 0
+OPTIONAL_DATA_PTR = 0
+USER_COST_SCHEDULE = 0
+USER_ACCEPT_ASYMP_EXP = 0
+USER_ACCEPT_THRESHOLD = 0
+USER_ACCEPTANCE_TEST = 0
+USER_GENERATING_FUNCTION = 0
+USER_REANNEAL_COST = 0
+USER_REANNEAL_PARAMETERS = 0
+MAXIMUM_REANNEAL_INDEX = 50000
+REANNEAL_SCALE =           10
+ASA_SAMPLE = 0
+ASA_QUEUE = 0
+ASA_RESOLUTION = 0
+FITLOC = 0
+FITLOC_ROUND = 1
+FITLOC_PRINT = 1
+MULTI_MIN = 0
+ASA_PARALLEL = 0
+FDLIBM_POW = 0
+FDLIBM_LOG = 0
+FDLIBM_EXP = 0
+
+ASA_PRINT = 1
+USER_OUT = asa_usr_out
+ASA_OUT = asa_out
+USER_ASA_OUT = 0
+ASA_PRINT_INTERMED = 1
+ASA_PRINT_MORE = 0
+INCL_STDOUT = 1
+G_FIELD = 12
+G_PRECISION = 7
+ASA_SAVE = 0
+ASA_SAVE_OPT = 0
+ASA_SAVE_BACKUP = 0
+ASA_PIPE = 0
+ASA_PIPE_FILE = 0
+SYSTEM_CALL = 1
+
+OPTIONS->Limit_Acceptances = 1000
+OPTIONS->Limit_Generated = 99999
+OPTIONS->Limit_Invalid_Generated_States = 1000
+OPTIONS->Accepted_To_Generated_Ratio =       0.0001
+
+OPTIONS->Cost_Precision =        1e-18
+OPTIONS->Maximum_Cost_Repeat = 5
+OPTIONS->Number_Cost_Samples = 5
+OPTIONS->Temperature_Ratio_Scale =        1e-05
+OPTIONS->Cost_Parameter_Scale_Ratio =            1
+OPTIONS->Temperature_Anneal_Scale =          100
+OPTIONS->Include_Integer_Parameters = 0
+OPTIONS->User_Initial_Parameters = 0
+OPTIONS->Sequential_Parameters = -1
+OPTIONS->Initial_Parameter_Temperature =            1
+OPTIONS->Acceptance_Frequency_Modulus = 100
+OPTIONS->Generated_Frequency_Modulus = 10000
+OPTIONS->Reanneal_Cost = 1
+OPTIONS->Reanneal_Parameters = 1
+
+OPTIONS->Delta_X =        0.001
+OPTIONS->User_Tangents = 0
+OPTIONS->Curvature_0 = 0
+OPTIONS->Asa_Recursive_Level = 2003791904
+
+
+Initial Random Seed = 40679
+
+*number_parameters = 29
+
+index_v parameter_minimum parameter_maximum parameter_value parameter_type 
+ 0        25           		 35           	 30           1      
+ 1        25           		 35           	 30           1      
+ 2        25           		 35           	 30           1      
+ 3        25           		 35           	 30           1      
+ 4        25           		 35           	 30           1      
+ 5        25           		 35           	 30           1      
+ 6        25           		 35           	 30           1      
+ 7        25           		 35           	 30           1      
+ 8        25           		 35           	 30           1      
+ 9        25           		 35           	 30           1      
+ 10       25           		 35           	 30           1      
+ 11       25           		 35           	 30           1      
+ 12       25           		 35           	 30           1      
+ 13       25           		 35           	 30           1      
+ 14       25           		 35           	 30           1      
+ 15       25           		 35           	 30           1      
+ 16       25           		 35           	 30           1      
+ 17       25           		 35           	 30           1      
+ 18       25           		 35           	 30           1      
+ 19       25           		 35           	 30           1      
+ 20       25           		 35           	 30           1      
+ 21       25           		 35           	 30           1      
+ 22       25           		 35           	 30           1      
+ 23       25           		 35           	 30           1      
+ 24       25           		 35           	 30           1      
+ 25       25           		 35           	 30           1      
+ 26       25           		 35           	 30           1      
+ 27       25           		 35           	 30           1      
+ 28       25           		 35           	 30           1      
+
+
+temperature_scale =     9.822458
+temperature_scale_parameters[0] =     9.822458
+*temperature_scale_cost =     9.822458
+
+
+
+*index_cost_acceptances = 0, *current_cost_temperature =     27938.46
+*accepted_to_generated_ratio =            1, *number_invalid... = 40
+*number_generated = 0, *number_accepted = 0
+best...->cost =     27075.83, last...->cost =     27075.83
+index_v  best...->parameter current_parameter_temp	tangent
+0	          31		           1	5.594844e-305
+1	          35		           1	           0
+2	          25		           1	1.353666e-313
+3	          30		           1	1.38587e+219
+4	          28		           1	1.301372e+137
+5	          29		           1	2.574827e-22
+6	          29		           1	1.245946e+137
+7	          34		           1	4.391997e+199
+8	          30		           1	7.726734e+15
+9	          34		           1	7.364355e+223
+10	          30		           1	9.487224e+170
+11	          30		           1	7.721223e+15
+12	          25		           1	7.364355e+223
+13	          30		           1	1.908869e+136
+14	          32		           1	6.54899e+165
+15	          30		           1	5.362377e+276
+16	          33		           1	2.075987e+243
+17	          29		           1	6.49852e+165
+18	          30		           1	2.083805e+45
+19	          27		           1	1.072497e+277
+20	          28		           1	1.02637e+170
+21	          32		           1	3.759691e+112
+22	          26		           1	1.366398e+69
+23	          30		           1	1.770748e+248
+24	          32		           1	5.380877e+165
+25	          30		           1	5.362377e+276
+26	          25		           1	7.340585e+223
+27	          32		           1	2.145745e+137
+28	          29		           1	8.552102e-72
+
+
+best...->cost=26670.41      *number_accepted=1  *number_generated=1
+best...->cost=26349.68      *number_accepted=2  *number_generated=4
+best...->cost=26326.16      *number_accepted=3  *number_generated=7
+best...->cost=26313.04      *number_accepted=4  *number_generated=8
+best...->cost=26004.52      *number_accepted=5  *number_generated=9
+best...->cost=25770.54      *number_accepted=6  *number_generated=10
+best...->cost=25693.38      *number_accepted=7  *number_generated=12
+best...->cost=25656.49      *number_accepted=8  *number_generated=14
+best...->cost=25540.85      *number_accepted=9  *number_generated=15
+best...->cost=25489.3       *number_accepted=10  *number_generated=28
+best...->cost=25380.16      *number_accepted=11  *number_generated=30
+best...->cost=25305.78      *number_accepted=12  *number_generated=31
+best...->cost=25294.93      *number_accepted=13  *number_generated=32
+best...->cost=25275.21      *number_accepted=14  *number_generated=34
+best...->cost=25149.79      *number_accepted=15  *number_generated=35
+best...->cost=25089.22      *number_accepted=16  *number_generated=40
+best...->cost=25055.7       *number_accepted=17  *number_generated=44
+best...->cost=24998.36      *number_accepted=18  *number_generated=56
+best...->cost=24907.56      *number_accepted=19  *number_generated=59
+best...->cost=24827.17      *number_accepted=20  *number_generated=60
+best...->cost=24765.77      *number_accepted=21  *number_generated=67
+best...->cost=24563.95      *number_accepted=22  *number_generated=111
+best...->cost=24494.46      *number_accepted=23  *number_generated=113
+best...->cost=24265.4       *number_accepted=24  *number_generated=127
+best...->cost=24147.11      *number_accepted=25  *number_generated=144
+best...->cost=24145.99      *number_accepted=26  *number_generated=153
+best...->cost=24106.55      *number_accepted=27  *number_generated=159
+best...->cost=23963.85      *number_accepted=28  *number_generated=200
+best...->cost=23924.71      *number_accepted=29  *number_generated=208
+best...->cost=23905.85      *number_accepted=30  *number_generated=212
+best...->cost=23874.31      *number_accepted=31  *number_generated=220
+best...->cost=23815.14      *number_accepted=32  *number_generated=246
+best...->cost=23805.7       *number_accepted=33  *number_generated=252
+best...->cost=23798.81      *number_accepted=35  *number_generated=272
+best...->cost=23797.94      *number_accepted=37  *number_generated=306
+best...->cost=23778.22      *number_accepted=38  *number_generated=349
+best...->cost=23734.57      *number_accepted=39  *number_generated=377
+best...->cost=23701.19      *number_accepted=40  *number_generated=529
+best...->cost=23642.32      *number_accepted=42  *number_generated=576
+best...->cost=23622.6       *number_accepted=43  *number_generated=599
+best...->cost=23601.47      *number_accepted=45  *number_generated=623
+best...->cost=23600.89      *number_accepted=47  *number_generated=669
+best...->cost=23562.02      *number_accepted=48  *number_generated=691
+best...->cost=23502.86      *number_accepted=50  *number_generated=768
+best...->cost=23416.26      *number_accepted=52  *number_generated=870
+best...->cost=23357.09      *number_accepted=54  *number_generated=1059
+best...->cost=23337.66      *number_accepted=63  *number_generated=1407
+best...->cost=23308.24      *number_accepted=66  *number_generated=1453
+best...->cost=23297.68      *number_accepted=71  *number_generated=1637
+best...->cost=23258.81      *number_accepted=72  *number_generated=1666
+best...->cost=23239.09      *number_accepted=73  *number_generated=1755
+best...->cost=23239.09      *number_accepted=86  *number_generated=2238
+
+*index_cost_acceptances = 62, *current_cost_temperature =    0.2805014
+*accepted_to_generated_ratio =   0.01889169, *number_invalid... = 3019
+*number_generated = 3031, *number_accepted = 100
+best...->cost =     23239.09, last...->cost =     23239.09
+index_v  best...->parameter current_parameter_temp	tangent
+0	          30		2.375858e-06	           0
+1	          30		2.375858e-06	           0
+2	          25		2.375858e-06	           0
+3	          25		2.375858e-06	           0
+4	          25		2.375858e-06	           0
+5	          29		2.375858e-06	           0
+6	          25		2.375858e-06	           0
+7	          30		2.375858e-06	           0
+8	          25		2.375858e-06	           0
+9	          25		2.375858e-06	           0
+10	          25		2.375858e-06	           0
+11	          25		2.375858e-06	           0
+12	          25		2.375858e-06	           0
+13	          29		2.375858e-06	           0
+14	          31		2.375858e-06	           0
+15	          25		2.375858e-06	           0
+16	          25		2.375858e-06	           0
+17	          31		2.375858e-06	           0
+18	          31		2.375858e-06	           0
+19	          25		2.375858e-06	           0
+20	          25		2.375858e-06	           0
+21	          26		2.375858e-06	           0
+22	          25		2.375858e-06	           0
+23	          25		2.375858e-06	           0
+24	          25		2.375858e-06	           0
+25	          29		2.375858e-06	           0
+26	          27		2.375858e-06	           0
+27	          25		2.375858e-06	           0
+28	          25		2.375858e-06	           0
+
+
+best...->cost=23219.37      *number_accepted=105  *number_generated=3297
+best...->cost=23199.65      *number_accepted=113  *number_generated=3736
+best...->cost=23189.91      *number_accepted=123  *number_generated=4321
+best...->cost=23140.48      *number_accepted=141  *number_generated=5207
+best...->cost=23100.6       *number_accepted=177  *number_generated=6575
+
+*index_cost_acceptances = 158, *current_cost_temperature =    0.1920578
+*accepted_to_generated_ratio =   0.01726619, *number_invalid... = 8448
+*number_generated = 7964, *number_accepted = 200
+best...->cost =      23100.6, last...->cost =      23100.6
+index_v  best...->parameter current_parameter_temp	tangent
+0	          30		1.532195e-06	           0
+1	          30		1.532195e-06	           0
+2	          25		1.532195e-06	           0
+3	          25		1.532195e-06	           0
+4	          25		1.532195e-06	           0
+5	          30		1.532195e-06	           0
+6	          25		1.532195e-06	           0
+7	          30		1.532195e-06	           0
+8	          25		1.532195e-06	           0
+9	          25		1.532195e-06	           0
+10	          25		1.532195e-06	           0
+11	          25		1.532195e-06	           0
+12	          25		1.532195e-06	           0
+13	          29		1.532195e-06	           0
+14	          31		1.532195e-06	           0
+15	          25		1.532195e-06	           0
+16	          25		1.532195e-06	           0
+17	          30		1.532195e-06	           0
+18	          31		1.532195e-06	           0
+19	          25		1.532195e-06	           0
+20	          25		1.532195e-06	           0
+21	          25		1.532195e-06	           0
+22	          25		1.532195e-06	           0
+23	          25		1.532195e-06	           0
+24	          30		1.532195e-06	           0
+25	          25		1.532195e-06	           0
+26	          25		1.532195e-06	           0
+27	          25		1.532195e-06	           0
+28	          25		1.532195e-06	           0
+
+
+
+*index_cost_acceptances = 193, *current_cost_temperature =    0.1774037
+*accepted_to_generated_ratio =   0.01722125, *number_invalid... = 10520
+*number_generated = 10000, *number_accepted = 235
+best...->cost =      23100.6, last...->cost =      23100.6
+index_v  best...->parameter current_parameter_temp	tangent
+0	          30		1.378759e-06	           0
+1	          30		1.378759e-06	           0
+2	          25		1.378759e-06	           0
+3	          25		1.378759e-06	           0
+4	          25		1.378759e-06	           0
+5	          30		1.378759e-06	           0
+6	          25		1.378759e-06	           0
+7	          30		1.378759e-06	           0
+8	          25		1.378759e-06	           0
+9	          25		1.378759e-06	           0
+10	          25		1.378759e-06	           0
+11	          25		1.378759e-06	           0
+12	          25		1.378759e-06	           0
+13	          29		1.378759e-06	           0
+14	          31		1.378759e-06	           0
+15	          25		1.378759e-06	           0
+16	          25		1.378759e-06	           0
+17	          30		1.378759e-06	           0
+18	          31		1.378759e-06	           0
+19	          25		1.378759e-06	           0
+20	          25		1.378759e-06	           0
+21	          25		1.378759e-06	           0
+22	          25		1.378759e-06	           0
+23	          25		1.378759e-06	           0
+24	          30		1.378759e-06	           0
+25	          25		1.378759e-06	           0
+26	          25		1.378759e-06	           0
+27	          25		1.378759e-06	           0
+28	          25		1.378759e-06	           0
+
+
+
+*index_cost_acceptances = 256, *current_cost_temperature =     0.157835
+*accepted_to_generated_ratio =   0.01614583, *number_invalid... = 14614
+*number_generated = 14254, *number_accepted = 300
+best...->cost =      23100.6, last...->cost =      23100.6
+index_v  best...->parameter current_parameter_temp	tangent
+0	          30		1.167936e-06	           0
+1	          30		1.167936e-06	           0
+2	          25		1.167936e-06	           0
+3	          25		1.167936e-06	           0
+4	          25		1.167936e-06	           0
+5	          30		1.167936e-06	           0
+6	          25		1.167936e-06	           0
+7	          30		1.167936e-06	           0
+8	          25		1.167936e-06	           0
+9	          25		1.167936e-06	           0
+10	          25		1.167936e-06	           0
+11	          25		1.167936e-06	           0
+12	          25		1.167936e-06	           0
+13	          29		1.167936e-06	           0
+14	          31		1.167936e-06	           0
+15	          25		1.167936e-06	           0
+16	          25		1.167936e-06	           0
+17	          30		1.167936e-06	           0
+18	          31		1.167936e-06	           0
+19	          25		1.167936e-06	           0
+20	          25		1.167936e-06	           0
+21	          25		1.167936e-06	           0
+22	          25		1.167936e-06	           0
+23	          25		1.167936e-06	           0
+24	          30		1.167936e-06	           0
+25	          25		1.167936e-06	           0
+26	          25		1.167936e-06	           0
+27	          25		1.167936e-06	           0
+28	          25		1.167936e-06	           0
+
+
+
+*index_cost_acceptances = 347, *current_cost_temperature =    0.1394588
+*accepted_to_generated_ratio =    0.0160137, *number_invalid... = 19959
+*number_generated = 20000, *number_accepted = 391
+best...->cost =      23100.6, last...->cost =      23100.6
+index_v  best...->parameter current_parameter_temp	tangent
+0	          30		 9.94776e-07	           0
+1	          30		 9.94776e-07	           0
+2	          25		 9.94776e-07	           0
+3	          25		 9.94776e-07	           0
+4	          25		 9.94776e-07	           0
+5	          30		 9.94776e-07	           0
+6	          25		 9.94776e-07	           0
+7	          30		 9.94776e-07	           0
+8	          25		 9.94776e-07	           0
+9	          25		 9.94776e-07	           0
+10	          25		 9.94776e-07	           0
+11	          25		 9.94776e-07	           0
+12	          25		 9.94776e-07	           0
+13	          29		 9.94776e-07	           0
+14	          31		 9.94776e-07	           0
+15	          25		 9.94776e-07	           0
+16	          25		 9.94776e-07	           0
+17	          30		 9.94776e-07	           0
+18	          31		 9.94776e-07	           0
+19	          25		 9.94776e-07	           0
+20	          25		 9.94776e-07	           0
+21	          25		 9.94776e-07	           0
+22	          25		 9.94776e-07	           0
+23	          25		 9.94776e-07	           0
+24	          30		 9.94776e-07	           0
+25	          25		 9.94776e-07	           0
+26	          25		 9.94776e-07	           0
+27	          25		 9.94776e-07	           0
+28	          25		 9.94776e-07	           0
+
+
+
+*index_cost_acceptances = 356, *current_cost_temperature =    0.1381472
+*accepted_to_generated_ratio =   0.01602518, *number_invalid... = 20465
+*number_generated = 20552, *number_accepted = 400
+best...->cost =      23100.6, last...->cost =      23100.6
+index_v  best...->parameter current_parameter_temp	tangent
+0	          30		9.819459e-07	           0
+1	          30		9.819459e-07	           0
+2	          25		9.819459e-07	           0
+3	          25		9.819459e-07	           0
+4	          25		9.819459e-07	           0
+5	          30		9.819459e-07	           0
+6	          25		9.819459e-07	           0
+7	          30		9.819459e-07	           0
+8	          25		9.819459e-07	           0
+9	          25		9.819459e-07	           0
+10	          25		9.819459e-07	           0
+11	          25		9.819459e-07	           0
+12	          25		9.819459e-07	           0
+13	          29		9.819459e-07	           0
+14	          31		9.819459e-07	           0
+15	          25		9.819459e-07	           0
+16	          25		9.819459e-07	           0
+17	          30		9.819459e-07	           0
+18	          31		9.819459e-07	           0
+19	          25		9.819459e-07	           0
+20	          25		9.819459e-07	           0
+21	          25		9.819459e-07	           0
+22	          25		9.819459e-07	           0
+23	          25		9.819459e-07	           0
+24	          30		9.819459e-07	           0
+25	          25		9.819459e-07	           0
+26	          25		9.819459e-07	           0
+27	          25		9.819459e-07	           0
+28	          25		9.819459e-07	           0
+
+curvature[0][0] =            0
+
+curvature[1][0] =            0 	 = curvature[0][1]
+curvature[1][1] =            0
+
+curvature[2][0] =            0 	 = curvature[0][2]
+curvature[2][1] =            0 	 = curvature[1][2]
+curvature[2][2] =            0
+
+curvature[3][0] =            0 	 = curvature[0][3]
+curvature[3][1] =            0 	 = curvature[1][3]
+curvature[3][2] =            0 	 = curvature[2][3]
+curvature[3][3] =            0
+
+curvature[4][0] =            0 	 = curvature[0][4]
+curvature[4][1] =            0 	 = curvature[1][4]
+curvature[4][2] =            0 	 = curvature[2][4]
+curvature[4][3] =            0 	 = curvature[3][4]
+curvature[4][4] =            0
+
+curvature[5][0] =            0 	 = curvature[0][5]
+curvature[5][1] =            0 	 = curvature[1][5]
+curvature[5][2] =            0 	 = curvature[2][5]
+curvature[5][3] =            0 	 = curvature[3][5]
+curvature[5][4] =            0 	 = curvature[4][5]
+curvature[5][5] =            0
+
+curvature[6][0] =            0 	 = curvature[0][6]
+curvature[6][1] =            0 	 = curvature[1][6]
+curvature[6][2] =            0 	 = curvature[2][6]
+curvature[6][3] =            0 	 = curvature[3][6]
+curvature[6][4] =            0 	 = curvature[4][6]
+curvature[6][5] =            0 	 = curvature[5][6]
+curvature[6][6] =            0
+
+curvature[7][0] =            0 	 = curvature[0][7]
+curvature[7][1] =            0 	 = curvature[1][7]
+curvature[7][2] =            0 	 = curvature[2][7]
+curvature[7][3] =            0 	 = curvature[3][7]
+curvature[7][4] =            0 	 = curvature[4][7]
+curvature[7][5] =            0 	 = curvature[5][7]
+curvature[7][6] =            0 	 = curvature[6][7]
+curvature[7][7] =            0
+
+curvature[8][0] =            0 	 = curvature[0][8]
+curvature[8][1] =            0 	 = curvature[1][8]
+curvature[8][2] =            0 	 = curvature[2][8]
+curvature[8][3] =            0 	 = curvature[3][8]
+curvature[8][4] =            0 	 = curvature[4][8]
+curvature[8][5] =            0 	 = curvature[5][8]
+curvature[8][6] =            0 	 = curvature[6][8]
+curvature[8][7] =            0 	 = curvature[7][8]
+curvature[8][8] =            0
+
+curvature[9][0] =            0 	 = curvature[0][9]
+curvature[9][1] =            0 	 = curvature[1][9]
+curvature[9][2] =            0 	 = curvature[2][9]
+curvature[9][3] =            0 	 = curvature[3][9]
+curvature[9][4] =            0 	 = curvature[4][9]
+curvature[9][5] =            0 	 = curvature[5][9]
+curvature[9][6] =            0 	 = curvature[6][9]
+curvature[9][7] =            0 	 = curvature[7][9]
+curvature[9][8] =            0 	 = curvature[8][9]
+curvature[9][9] =            0
+
+curvature[10][0] =            0 	 = curvature[0][10]
+curvature[10][1] =            0 	 = curvature[1][10]
+curvature[10][2] =            0 	 = curvature[2][10]
+curvature[10][3] =            0 	 = curvature[3][10]
+curvature[10][4] =            0 	 = curvature[4][10]
+curvature[10][5] =            0 	 = curvature[5][10]
+curvature[10][6] =            0 	 = curvature[6][10]
+curvature[10][7] =            0 	 = curvature[7][10]
+curvature[10][8] =            0 	 = curvature[8][10]
+curvature[10][9] =            0 	 = curvature[9][10]
+curvature[10][10] =            0
+
+curvature[11][0] =            0 	 = curvature[0][11]
+curvature[11][1] =            0 	 = curvature[1][11]
+curvature[11][2] =            0 	 = curvature[2][11]
+curvature[11][3] =            0 	 = curvature[3][11]
+curvature[11][4] =            0 	 = curvature[4][11]
+curvature[11][5] =            0 	 = curvature[5][11]
+curvature[11][6] =            0 	 = curvature[6][11]
+curvature[11][7] =            0 	 = curvature[7][11]
+curvature[11][8] =            0 	 = curvature[8][11]
+curvature[11][9] =            0 	 = curvature[9][11]
+curvature[11][10] =            0 	 = curvature[10][11]
+curvature[11][11] =            0
+
+curvature[12][0] =            0 	 = curvature[0][12]
+curvature[12][1] =            0 	 = curvature[1][12]
+curvature[12][2] =            0 	 = curvature[2][12]
+curvature[12][3] =            0 	 = curvature[3][12]
+curvature[12][4] =            0 	 = curvature[4][12]
+curvature[12][5] =            0 	 = curvature[5][12]
+curvature[12][6] =            0 	 = curvature[6][12]
+curvature[12][7] =            0 	 = curvature[7][12]
+curvature[12][8] =            0 	 = curvature[8][12]
+curvature[12][9] =            0 	 = curvature[9][12]
+curvature[12][10] =            0 	 = curvature[10][12]
+curvature[12][11] =            0 	 = curvature[11][12]
+curvature[12][12] =            0
+
+curvature[13][0] =            0 	 = curvature[0][13]
+curvature[13][1] =            0 	 = curvature[1][13]
+curvature[13][2] =            0 	 = curvature[2][13]
+curvature[13][3] =            0 	 = curvature[3][13]
+curvature[13][4] =            0 	 = curvature[4][13]
+curvature[13][5] =            0 	 = curvature[5][13]
+curvature[13][6] =            0 	 = curvature[6][13]
+curvature[13][7] =            0 	 = curvature[7][13]
+curvature[13][8] =            0 	 = curvature[8][13]
+curvature[13][9] =            0 	 = curvature[9][13]
+curvature[13][10] =            0 	 = curvature[10][13]
+curvature[13][11] =            0 	 = curvature[11][13]
+curvature[13][12] =            0 	 = curvature[12][13]
+curvature[13][13] =            0
+
+curvature[14][0] =            0 	 = curvature[0][14]
+curvature[14][1] =            0 	 = curvature[1][14]
+curvature[14][2] =            0 	 = curvature[2][14]
+curvature[14][3] =            0 	 = curvature[3][14]
+curvature[14][4] =            0 	 = curvature[4][14]
+curvature[14][5] =            0 	 = curvature[5][14]
+curvature[14][6] =            0 	 = curvature[6][14]
+curvature[14][7] =            0 	 = curvature[7][14]
+curvature[14][8] =            0 	 = curvature[8][14]
+curvature[14][9] =            0 	 = curvature[9][14]
+curvature[14][10] =            0 	 = curvature[10][14]
+curvature[14][11] =            0 	 = curvature[11][14]
+curvature[14][12] =            0 	 = curvature[12][14]
+curvature[14][13] =            0 	 = curvature[13][14]
+curvature[14][14] =            0
+
+curvature[15][0] =            0 	 = curvature[0][15]
+curvature[15][1] =            0 	 = curvature[1][15]
+curvature[15][2] =            0 	 = curvature[2][15]
+curvature[15][3] =            0 	 = curvature[3][15]
+curvature[15][4] =            0 	 = curvature[4][15]
+curvature[15][5] =            0 	 = curvature[5][15]
+curvature[15][6] =            0 	 = curvature[6][15]
+curvature[15][7] =            0 	 = curvature[7][15]
+curvature[15][8] =            0 	 = curvature[8][15]
+curvature[15][9] =            0 	 = curvature[9][15]
+curvature[15][10] =            0 	 = curvature[10][15]
+curvature[15][11] =            0 	 = curvature[11][15]
+curvature[15][12] =            0 	 = curvature[12][15]
+curvature[15][13] =            0 	 = curvature[13][15]
+curvature[15][14] =            0 	 = curvature[14][15]
+curvature[15][15] =            0
+
+curvature[16][0] =            0 	 = curvature[0][16]
+curvature[16][1] =            0 	 = curvature[1][16]
+curvature[16][2] =            0 	 = curvature[2][16]
+curvature[16][3] =            0 	 = curvature[3][16]
+curvature[16][4] =            0 	 = curvature[4][16]
+curvature[16][5] =            0 	 = curvature[5][16]
+curvature[16][6] =            0 	 = curvature[6][16]
+curvature[16][7] =            0 	 = curvature[7][16]
+curvature[16][8] =            0 	 = curvature[8][16]
+curvature[16][9] =            0 	 = curvature[9][16]
+curvature[16][10] =            0 	 = curvature[10][16]
+curvature[16][11] =            0 	 = curvature[11][16]
+curvature[16][12] =            0 	 = curvature[12][16]
+curvature[16][13] =            0 	 = curvature[13][16]
+curvature[16][14] =            0 	 = curvature[14][16]
+curvature[16][15] =            0 	 = curvature[15][16]
+curvature[16][16] =            0
+
+curvature[17][0] =            0 	 = curvature[0][17]
+curvature[17][1] =            0 	 = curvature[1][17]
+curvature[17][2] =            0 	 = curvature[2][17]
+curvature[17][3] =            0 	 = curvature[3][17]
+curvature[17][4] =            0 	 = curvature[4][17]
+curvature[17][5] =            0 	 = curvature[5][17]
+curvature[17][6] =            0 	 = curvature[6][17]
+curvature[17][7] =            0 	 = curvature[7][17]
+curvature[17][8] =            0 	 = curvature[8][17]
+curvature[17][9] =            0 	 = curvature[9][17]
+curvature[17][10] =            0 	 = curvature[10][17]
+curvature[17][11] =            0 	 = curvature[11][17]
+curvature[17][12] =            0 	 = curvature[12][17]
+curvature[17][13] =            0 	 = curvature[13][17]
+curvature[17][14] =            0 	 = curvature[14][17]
+curvature[17][15] =            0 	 = curvature[15][17]
+curvature[17][16] =            0 	 = curvature[16][17]
+curvature[17][17] =            0
+
+curvature[18][0] =            0 	 = curvature[0][18]
+curvature[18][1] =            0 	 = curvature[1][18]
+curvature[18][2] =            0 	 = curvature[2][18]
+curvature[18][3] =            0 	 = curvature[3][18]
+curvature[18][4] =            0 	 = curvature[4][18]
+curvature[18][5] =            0 	 = curvature[5][18]
+curvature[18][6] =            0 	 = curvature[6][18]
+curvature[18][7] =            0 	 = curvature[7][18]
+curvature[18][8] =            0 	 = curvature[8][18]
+curvature[18][9] =            0 	 = curvature[9][18]
+curvature[18][10] =            0 	 = curvature[10][18]
+curvature[18][11] =            0 	 = curvature[11][18]
+curvature[18][12] =            0 	 = curvature[12][18]
+curvature[18][13] =            0 	 = curvature[13][18]
+curvature[18][14] =            0 	 = curvature[14][18]
+curvature[18][15] =            0 	 = curvature[15][18]
+curvature[18][16] =            0 	 = curvature[16][18]
+curvature[18][17] =            0 	 = curvature[17][18]
+curvature[18][18] =            0
+
+curvature[19][0] =            0 	 = curvature[0][19]
+curvature[19][1] =            0 	 = curvature[1][19]
+curvature[19][2] =            0 	 = curvature[2][19]
+curvature[19][3] =            0 	 = curvature[3][19]
+curvature[19][4] =            0 	 = curvature[4][19]
+curvature[19][5] =            0 	 = curvature[5][19]
+curvature[19][6] =            0 	 = curvature[6][19]
+curvature[19][7] =            0 	 = curvature[7][19]
+curvature[19][8] =            0 	 = curvature[8][19]
+curvature[19][9] =            0 	 = curvature[9][19]
+curvature[19][10] =            0 	 = curvature[10][19]
+curvature[19][11] =            0 	 = curvature[11][19]
+curvature[19][12] =            0 	 = curvature[12][19]
+curvature[19][13] =            0 	 = curvature[13][19]
+curvature[19][14] =            0 	 = curvature[14][19]
+curvature[19][15] =            0 	 = curvature[15][19]
+curvature[19][16] =            0 	 = curvature[16][19]
+curvature[19][17] =            0 	 = curvature[17][19]
+curvature[19][18] =            0 	 = curvature[18][19]
+curvature[19][19] =            0
+
+curvature[20][0] =            0 	 = curvature[0][20]
+curvature[20][1] =            0 	 = curvature[1][20]
+curvature[20][2] =            0 	 = curvature[2][20]
+curvature[20][3] =            0 	 = curvature[3][20]
+curvature[20][4] =            0 	 = curvature[4][20]
+curvature[20][5] =            0 	 = curvature[5][20]
+curvature[20][6] =            0 	 = curvature[6][20]
+curvature[20][7] =            0 	 = curvature[7][20]
+curvature[20][8] =            0 	 = curvature[8][20]
+curvature[20][9] =            0 	 = curvature[9][20]
+curvature[20][10] =            0 	 = curvature[10][20]
+curvature[20][11] =            0 	 = curvature[11][20]
+curvature[20][12] =            0 	 = curvature[12][20]
+curvature[20][13] =            0 	 = curvature[13][20]
+curvature[20][14] =            0 	 = curvature[14][20]
+curvature[20][15] =            0 	 = curvature[15][20]
+curvature[20][16] =            0 	 = curvature[16][20]
+curvature[20][17] =            0 	 = curvature[17][20]
+curvature[20][18] =            0 	 = curvature[18][20]
+curvature[20][19] =            0 	 = curvature[19][20]
+curvature[20][20] =            0
+
+curvature[21][0] =            0 	 = curvature[0][21]
+curvature[21][1] =            0 	 = curvature[1][21]
+curvature[21][2] =            0 	 = curvature[2][21]
+curvature[21][3] =            0 	 = curvature[3][21]
+curvature[21][4] =            0 	 = curvature[4][21]
+curvature[21][5] =            0 	 = curvature[5][21]
+curvature[21][6] =            0 	 = curvature[6][21]
+curvature[21][7] =            0 	 = curvature[7][21]
+curvature[21][8] =            0 	 = curvature[8][21]
+curvature[21][9] =            0 	 = curvature[9][21]
+curvature[21][10] =            0 	 = curvature[10][21]
+curvature[21][11] =            0 	 = curvature[11][21]
+curvature[21][12] =            0 	 = curvature[12][21]
+curvature[21][13] =            0 	 = curvature[13][21]
+curvature[21][14] =            0 	 = curvature[14][21]
+curvature[21][15] =            0 	 = curvature[15][21]
+curvature[21][16] =            0 	 = curvature[16][21]
+curvature[21][17] =            0 	 = curvature[17][21]
+curvature[21][18] =            0 	 = curvature[18][21]
+curvature[21][19] =            0 	 = curvature[19][21]
+curvature[21][20] =            0 	 = curvature[20][21]
+curvature[21][21] =            0
+
+curvature[22][0] =            0 	 = curvature[0][22]
+curvature[22][1] =            0 	 = curvature[1][22]
+curvature[22][2] =            0 	 = curvature[2][22]
+curvature[22][3] =            0 	 = curvature[3][22]
+curvature[22][4] =            0 	 = curvature[4][22]
+curvature[22][5] =            0 	 = curvature[5][22]
+curvature[22][6] =            0 	 = curvature[6][22]
+curvature[22][7] =            0 	 = curvature[7][22]
+curvature[22][8] =            0 	 = curvature[8][22]
+curvature[22][9] =            0 	 = curvature[9][22]
+curvature[22][10] =            0 	 = curvature[10][22]
+curvature[22][11] =            0 	 = curvature[11][22]
+curvature[22][12] =            0 	 = curvature[12][22]
+curvature[22][13] =            0 	 = curvature[13][22]
+curvature[22][14] =            0 	 = curvature[14][22]
+curvature[22][15] =            0 	 = curvature[15][22]
+curvature[22][16] =            0 	 = curvature[16][22]
+curvature[22][17] =            0 	 = curvature[17][22]
+curvature[22][18] =            0 	 = curvature[18][22]
+curvature[22][19] =            0 	 = curvature[19][22]
+curvature[22][20] =            0 	 = curvature[20][22]
+curvature[22][21] =            0 	 = curvature[21][22]
+curvature[22][22] =            0
+
+curvature[23][0] =            0 	 = curvature[0][23]
+curvature[23][1] =            0 	 = curvature[1][23]
+curvature[23][2] =            0 	 = curvature[2][23]
+curvature[23][3] =            0 	 = curvature[3][23]
+curvature[23][4] =            0 	 = curvature[4][23]
+curvature[23][5] =            0 	 = curvature[5][23]
+curvature[23][6] =            0 	 = curvature[6][23]
+curvature[23][7] =            0 	 = curvature[7][23]
+curvature[23][8] =            0 	 = curvature[8][23]
+curvature[23][9] =            0 	 = curvature[9][23]
+curvature[23][10] =            0 	 = curvature[10][23]
+curvature[23][11] =            0 	 = curvature[11][23]
+curvature[23][12] =            0 	 = curvature[12][23]
+curvature[23][13] =            0 	 = curvature[13][23]
+curvature[23][14] =            0 	 = curvature[14][23]
+curvature[23][15] =            0 	 = curvature[15][23]
+curvature[23][16] =            0 	 = curvature[16][23]
+curvature[23][17] =            0 	 = curvature[17][23]
+curvature[23][18] =            0 	 = curvature[18][23]
+curvature[23][19] =            0 	 = curvature[19][23]
+curvature[23][20] =            0 	 = curvature[20][23]
+curvature[23][21] =            0 	 = curvature[21][23]
+curvature[23][22] =            0 	 = curvature[22][23]
+curvature[23][23] =            0
+
+curvature[24][0] =            0 	 = curvature[0][24]
+curvature[24][1] =            0 	 = curvature[1][24]
+curvature[24][2] =            0 	 = curvature[2][24]
+curvature[24][3] =            0 	 = curvature[3][24]
+curvature[24][4] =            0 	 = curvature[4][24]
+curvature[24][5] =            0 	 = curvature[5][24]
+curvature[24][6] =            0 	 = curvature[6][24]
+curvature[24][7] =            0 	 = curvature[7][24]
+curvature[24][8] =            0 	 = curvature[8][24]
+curvature[24][9] =            0 	 = curvature[9][24]
+curvature[24][10] =            0 	 = curvature[10][24]
+curvature[24][11] =            0 	 = curvature[11][24]
+curvature[24][12] =            0 	 = curvature[12][24]
+curvature[24][13] =            0 	 = curvature[13][24]
+curvature[24][14] =            0 	 = curvature[14][24]
+curvature[24][15] =            0 	 = curvature[15][24]
+curvature[24][16] =            0 	 = curvature[16][24]
+curvature[24][17] =            0 	 = curvature[17][24]
+curvature[24][18] =            0 	 = curvature[18][24]
+curvature[24][19] =            0 	 = curvature[19][24]
+curvature[24][20] =            0 	 = curvature[20][24]
+curvature[24][21] =            0 	 = curvature[21][24]
+curvature[24][22] =            0 	 = curvature[22][24]
+curvature[24][23] =            0 	 = curvature[23][24]
+curvature[24][24] =            0
+
+curvature[25][0] =            0 	 = curvature[0][25]
+curvature[25][1] =            0 	 = curvature[1][25]
+curvature[25][2] =            0 	 = curvature[2][25]
+curvature[25][3] =            0 	 = curvature[3][25]
+curvature[25][4] =            0 	 = curvature[4][25]
+curvature[25][5] =            0 	 = curvature[5][25]
+curvature[25][6] =            0 	 = curvature[6][25]
+curvature[25][7] =            0 	 = curvature[7][25]
+curvature[25][8] =            0 	 = curvature[8][25]
+curvature[25][9] =            0 	 = curvature[9][25]
+curvature[25][10] =            0 	 = curvature[10][25]
+curvature[25][11] =            0 	 = curvature[11][25]
+curvature[25][12] =            0 	 = curvature[12][25]
+curvature[25][13] =            0 	 = curvature[13][25]
+curvature[25][14] =            0 	 = curvature[14][25]
+curvature[25][15] =            0 	 = curvature[15][25]
+curvature[25][16] =            0 	 = curvature[16][25]
+curvature[25][17] =            0 	 = curvature[17][25]
+curvature[25][18] =            0 	 = curvature[18][25]
+curvature[25][19] =            0 	 = curvature[19][25]
+curvature[25][20] =            0 	 = curvature[20][25]
+curvature[25][21] =            0 	 = curvature[21][25]
+curvature[25][22] =            0 	 = curvature[22][25]
+curvature[25][23] =            0 	 = curvature[23][25]
+curvature[25][24] =            0 	 = curvature[24][25]
+curvature[25][25] =            0
+
+curvature[26][0] =            0 	 = curvature[0][26]
+curvature[26][1] =            0 	 = curvature[1][26]
+curvature[26][2] =            0 	 = curvature[2][26]
+curvature[26][3] =            0 	 = curvature[3][26]
+curvature[26][4] =            0 	 = curvature[4][26]
+curvature[26][5] =            0 	 = curvature[5][26]
+curvature[26][6] =            0 	 = curvature[6][26]
+curvature[26][7] =            0 	 = curvature[7][26]
+curvature[26][8] =            0 	 = curvature[8][26]
+curvature[26][9] =            0 	 = curvature[9][26]
+curvature[26][10] =            0 	 = curvature[10][26]
+curvature[26][11] =            0 	 = curvature[11][26]
+curvature[26][12] =            0 	 = curvature[12][26]
+curvature[26][13] =            0 	 = curvature[13][26]
+curvature[26][14] =            0 	 = curvature[14][26]
+curvature[26][15] =            0 	 = curvature[15][26]
+curvature[26][16] =            0 	 = curvature[16][26]
+curvature[26][17] =            0 	 = curvature[17][26]
+curvature[26][18] =            0 	 = curvature[18][26]
+curvature[26][19] =            0 	 = curvature[19][26]
+curvature[26][20] =            0 	 = curvature[20][26]
+curvature[26][21] =            0 	 = curvature[21][26]
+curvature[26][22] =            0 	 = curvature[22][26]
+curvature[26][23] =            0 	 = curvature[23][26]
+curvature[26][24] =            0 	 = curvature[24][26]
+curvature[26][25] =            0 	 = curvature[25][26]
+curvature[26][26] =            0
+
+curvature[27][0] =            0 	 = curvature[0][27]
+curvature[27][1] =            0 	 = curvature[1][27]
+curvature[27][2] =            0 	 = curvature[2][27]
+curvature[27][3] =            0 	 = curvature[3][27]
+curvature[27][4] =            0 	 = curvature[4][27]
+curvature[27][5] =            0 	 = curvature[5][27]
+curvature[27][6] =            0 	 = curvature[6][27]
+curvature[27][7] =            0 	 = curvature[7][27]
+curvature[27][8] =            0 	 = curvature[8][27]
+curvature[27][9] =            0 	 = curvature[9][27]
+curvature[27][10] =            0 	 = curvature[10][27]
+curvature[27][11] =            0 	 = curvature[11][27]
+curvature[27][12] =            0 	 = curvature[12][27]
+curvature[27][13] =            0 	 = curvature[13][27]
+curvature[27][14] =            0 	 = curvature[14][27]
+curvature[27][15] =            0 	 = curvature[15][27]
+curvature[27][16] =            0 	 = curvature[16][27]
+curvature[27][17] =            0 	 = curvature[17][27]
+curvature[27][18] =            0 	 = curvature[18][27]
+curvature[27][19] =            0 	 = curvature[19][27]
+curvature[27][20] =            0 	 = curvature[20][27]
+curvature[27][21] =            0 	 = curvature[21][27]
+curvature[27][22] =            0 	 = curvature[22][27]
+curvature[27][23] =            0 	 = curvature[23][27]
+curvature[27][24] =            0 	 = curvature[24][27]
+curvature[27][25] =            0 	 = curvature[25][27]
+curvature[27][26] =            0 	 = curvature[26][27]
+curvature[27][27] =            0
+
+curvature[28][0] =            0 	 = curvature[0][28]
+curvature[28][1] =            0 	 = curvature[1][28]
+curvature[28][2] =            0 	 = curvature[2][28]
+curvature[28][3] =            0 	 = curvature[3][28]
+curvature[28][4] =            0 	 = curvature[4][28]
+curvature[28][5] =            0 	 = curvature[5][28]
+curvature[28][6] =            0 	 = curvature[6][28]
+curvature[28][7] =            0 	 = curvature[7][28]
+curvature[28][8] =            0 	 = curvature[8][28]
+curvature[28][9] =            0 	 = curvature[9][28]
+curvature[28][10] =            0 	 = curvature[10][28]
+curvature[28][11] =            0 	 = curvature[11][28]
+curvature[28][12] =            0 	 = curvature[12][28]
+curvature[28][13] =            0 	 = curvature[13][28]
+curvature[28][14] =            0 	 = curvature[14][28]
+curvature[28][15] =            0 	 = curvature[15][28]
+curvature[28][16] =            0 	 = curvature[16][28]
+curvature[28][17] =            0 	 = curvature[17][28]
+curvature[28][18] =            0 	 = curvature[18][28]
+curvature[28][19] =            0 	 = curvature[19][28]
+curvature[28][20] =            0 	 = curvature[20][28]
+curvature[28][21] =            0 	 = curvature[21][28]
+curvature[28][22] =            0 	 = curvature[22][28]
+curvature[28][23] =            0 	 = curvature[23][28]
+curvature[28][24] =            0 	 = curvature[24][28]
+curvature[28][25] =            0 	 = curvature[25][28]
+curvature[28][26] =            0 	 = curvature[26][28]
+curvature[28][27] =            0 	 = curvature[27][28]
+curvature[28][28] =            0
+
+
+
+ COST_REPEATING exit_status = 3
+ Locate_Cost = 5, calculating curvatures while exiting asa ()
+final_cost = best_generated_state->cost = 23100.6     
+*number_accepted at best_generated_state->cost = 177
+*number_generated at best_generated_state->cost = 6575
+
+
+

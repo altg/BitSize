@@ -1,0 +1,8 @@
+FIX_matrix2_uni = [ 7713  10209 ]
+FIX_matrix2_nonuni = [ 6803  9149 ]
+FIX_bspline_uni = [ 4509  5289 ]
+FIX_bspline_nonuni = [ 3214  4389 ]
+FIX_dct8_uni = [ 6221  10081 ]
+FIX_dct8_nonuni = [ 7159  10843 ]
+FIX_rgb2ycc_uni = [ 1945  2855 ]
+FIX_rgb2ycc_nonuni = [ 1874  2570 ]
